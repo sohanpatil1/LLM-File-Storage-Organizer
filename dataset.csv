@@ -1,0 +1,471 @@
+English understanding,Shell script
+move file.txt to the backup directory,mv file.txt backup/
+rename report.doc to summary.doc,mv report.doc summary.doc
+copy image.png to the images folder,cp image.png images/
+create a new directory named logs,mkdir logs
+remove the temp folder and its contents,rm -r temp/
+list all files in the current directory,ls
+list all hidden files in the current directory,ls -a
+move all .txt files to the docs folder,mv *.txt docs/
+copy all files from dir1 to dir2,cp dir1/* dir2/
+create nested folders a/b/c,mkdir -p a/b/c
+delete a file named delete_me.txt,rm delete_me.txt
+find all .py files in current directory,find . -name '*.py'
+compress logs directory into logs.tar.gz,tar -czvf logs.tar.gz logs/
+extract logs.tar.gz file,tar -xzvf logs.tar.gz
+change file permissions to executable for script.sh,chmod +x script.sh
+move up one directory and list contents,cd .. && ls
+display current working directory,pwd
+move everything from downloads to documents,mv downloads/* documents/
+remove all .log files,rm *.log
+copy script.sh to parent directory,cp script.sh ../
+remove directory named old_data,rm -r old_data/
+rename image1.jpg to photo.jpg,mv image1.jpg photo.jpg
+move all PDFs to pdfs directory,mv *.pdf pdfs/
+create directory if not exists named 'results',mkdir -p results
+copy directory 'configs' to backup,cp -r configs backup/
+list all files in /etc directory,ls /etc
+show contents of file.txt,cat file.txt
+clear terminal screen,clear
+search for the word 'error' in logfile.txt,grep 'error' logfile.txt
+move all .txt files from current directory to docs,mv *.txt docs/
+move backup.zip to the backup folder one level up,mv backup.zip ../backup/
+move everything from temp to archive,mv temp/* archive/
+create a new folder called backups inside the current directory,mkdir backups
+make a directory named scripts inside utils,mkdir -p utils/scripts
+create folders named data1 to data5,mkdir data{1..5}
+rename file1.txt to file2.txt,mv file1.txt file2.txt
+change the name of old_folder to new_folder,mv old_folder new_folder
+rename report_2022.docx to report_final.docx,mv report_2022.docx report_final.docx
+delete the file unwanted.log,rm unwanted.log
+remove the directory temp_files and its contents,rm -r temp_files/
+remove all png files in the current folder,rm *.png
+copy index.html to the public folder,cp index.html public/
+copy everything from src to dest folder,cp -r src/* dest/
+copy image.jpg and rename it as image_backup.jpg,cp image.jpg image_backup.jpg
+find all .sh files in the current directory,find . -name '*.sh'
+search for the string 'error' in server.log,grep 'error' server.log
+make script.sh executable,chmod +x script.sh
+give read, write and execute permissions to all for file.sh,chmod 777 file.sh
+display contents of todo.txt,cat todo.txt
+show the first 10 lines of log.txt,head log.txt
+show the last 5 lines of history.log,tail -n 5 history.log
+list all subdirectories in current directory,ls -d */
+move all jpg files from images to photos,mv images/*.jpg photos/
+copy all .csv files to data folder,cp *.csv data/
+create a directory called archive,mkdir archive
+remove all files in the cache directory,rm cache/*
+find all files larger than 10MB,find . -type f -size +10M
+find all empty directories,find . -type d -empty
+copy file.txt and rename as file_copy.txt,cp file.txt file_copy.txt
+move all files except .md files to backup,mv !(*.md) backup/
+find all files modified in the last 24 hours,find . -type f -mtime -1
+find all directories named 'test',find . -type d -name 'test'
+copy all files starting with 'data' to dataset,cp data* dataset/
+move all files from dirA to dirB,mv dirA/* dirB/
+remove all files in the current directory except .sh files,rm !(*.sh)
+create a directory structure a/b/c/d,mkdir -p a/b/c/d
+copy all files and folders from src to dest,cp -r src/* dest/
+move all files from current directory to parent directory,mv * ../
+rename folder old to new,mv old new
+remove all files with .bak extension,rm *.bak
+find all files containing 'password',grep -rl 'password' .
+copy all .json files from configs to backup,cp configs/*.json backup/
+move all files from downloads to /tmp,mv downloads/* /tmp/
+create a directory named test inside /tmp,mkdir /tmp/test
+remove all files in /tmp older than 7 days,find /tmp -type f -mtime +7 -exec rm {} \;
+find all symbolic links in current directory,find . -type l
+find all files owned by user 'sohan',find . -user sohan
+copy all files from /var/log to logs,cp /var/log/* logs/
+move all .mp3 files to music directory,mv *.mp3 music/
+create a directory named '2025' inside documents,mkdir documents/2025
+remove all files in logs except error.log,rm logs/!(error.log)
+find all files with 777 permissions,find . -type f -perm 0777
+find all files not accessed in last 30 days,find . -type f -atime +30
+copy all .zip files to archives,cp *.zip archives/
+move all .tar.gz files to backup,mv *.tar.gz backup/
+create a directory named 'images' if it doesn't exist,mkdir -p images
+remove all files in images directory,rm images/*
+find all files with .conf extension,find . -name '*.conf'
+copy all .md files to docs,cp *.md docs/
+move all .xls files to spreadsheets,mv *.xls spreadsheets/
+create a directory named 'projects' in home directory,mkdir ~/projects
+remove all files in /tmp except .log files,rm /tmp/!(*.log)
+find all files with 'TODO' in their name,find . -name '*TODO*'
+copy all .txt files from notes to backup,cp notes/*.txt backup/
+move all .docx files to documents,mv *.docx documents/
+create a directory named 'bin' in /usr/local,mkdir -p /usr/local/bin
+remove all files in bin directory,rm bin/*
+find all files with .bak or .tmp extension,find . -name '*.bak' -o -name '*.tmp'
+copy all .pdf files to reports,cp *.pdf reports/
+move all .csv files to data,mv *.csv data/
+create a directory named 'logs' in /var,mkdir -p /var/logs
+remove all files in /var/logs older than 30 days,find /var/logs -type f -mtime +30 -exec rm {} \;
+find all files with spaces in their names,find . -name '* *'
+copy all .tar files to archives,cp *.tar archives/
+move all .gz files to compressed,mv *.gz compressed/
+create a directory named 'downloads' in home,mkdir ~/downloads
+remove all files in downloads directory,rm downloads/*
+find all files with .ini extension,find . -name '*.ini'
+copy all .jpg files to images,cp *.jpg images/
+move all .pptx files to presentations,mv *.pptx presentations/
+create a directory named 'scripts' in /opt,mkdir -p /opt/scripts
+remove all files in scripts directory,rm scripts/*
+find all files with .log extension,find . -name '*.log'
+copy all .doc files to docs,cp *.doc docs/
+move all .mp4 files to videos,mv *.mp4 videos/
+create a directory named 'cache' in /tmp,mkdir /tmp/cache
+remove all files in cache directory,rm /tmp/cache/*
+find all files with .dat extension,find . -name '*.dat'
+copy all .xls files to excel,cp *.xls excel/
+move all .txt files to textfiles,mv *.txt textfiles/
+create a directory named 'notes' in home,mkdir ~/notes
+remove all files in notes directory,rm ~/notes/*
+find all files with .csv extension,find . -name '*.csv'
+copy all .png files to pictures,cp *.png pictures/
+move all .wav files to audio,mv *.wav audio/
+create a directory named 'output' in current directory,mkdir output
+remove all files in output directory,rm output/*
+find all files with .xml extension,find . -name '*.xml'
+copy all .mp3 files to music,cp *.mp3 music/
+move all .avi files to movies,mv *.avi movies/
+create a directory named 'temp' in /var,mkdir /var/temp
+remove all files in temp directory,rm /var/temp/*
+find all files with .json extension,find . -name '*.json'
+copy all .gif files to gifs,cp *.gif gifs/
+move all .flac files to music,mv *.flac music/
+create a directory named 'backup' in /mnt,mkdir /mnt/backup
+remove all files in backup directory,rm /mnt/backup/*
+find all files with .yml extension,find . -name '*.yml'
+copy all .mp4 files to videos,cp *.mp4 videos/
+move all .mkv files to movies,mv *.mkv movies/
+create a directory named 'docs' in /srv,mkdir /srv/docs
+remove all files in docs directory,rm /srv/docs/*
+find all files with .tar extension,find . -name '*.tar'
+copy all .wav files to audio,cp *.wav audio/
+move all .ogg files to music,mv *.ogg music/
+create a directory named 'media' in /media,mkdir /media/media
+remove all files in media directory,rm /media/media/*
+find all files with .zip extension,find . -name '*.zip'
+copy all .flac files to music,cp *.flac music/
+move all .aac files to music,mv *.aac music/
+create a directory named 'public' in /var/www,mkdir -p /var/www/public
+remove all files in public directory,rm /var/www/public/*
+find all files with .mp3 extension,find . -name '*.mp3'
+copy all .aac files to music,cp *.aac music/
+move all .webm files to videos,mv *.webm videos/
+create a directory named 'private' in /srv,mkdir /srv/private
+remove all files in private directory,rm /srv/private/*
+find all files with .md extension,find . -name '*.md'
+copy all .webm files to videos,cp *.webm videos/
+move all .mov files to movies,mv *.mov movies/
+create a directory named 'projects' in /opt,mkdir /opt/projects
+remove all files in projects directory,rm /opt/projects/*
+find all files with .docx extension,find . -name '*.docx'
+copy all .mov files to movies,cp *.mov movies/
+move all .bmp files to images,mv *.bmp images/
+create a directory named 'samples' in /tmp,mkdir /tmp/samples
+remove all files in samples directory,rm /tmp/samples/*
+find all files with .bmp extension,find . -name '*.bmp'
+copy all .bmp files to images,cp *.bmp images/
+move all .tiff files to images,mv *.tiff images/
+create a directory named 'snapshots' in /var,mkdir /var/snapshots
+remove all files in snapshots directory,rm /var/snapshots/*
+find all files with .tiff extension,find . -name '*.tiff'
+copy all .tiff files to images,cp *.tiff images/
+move all .svg files to images,mv *.svg images/
+create a directory named 'svg' in /usr/share,mkdir /usr/share/svg
+remove all files in svg directory,rm /usr/share/svg/*
+find all files with .svg extension,find . -name '*.svg'
+copy all .svg files to images,cp *.svg images/
+move all .psd files to images,mv *.psd images/
+create a directory named 'psd' in /usr/share,mkdir /usr/share/psd
+remove all files in psd directory,rm /usr/share/psd/*
+find all files with .psd extension,find . -name '*.psd'
+copy all .psd files to images,cp *.psd images/
+move all .ai files to images,mv *.ai images/
+create a directory named 'ai' in /usr/share,mkdir /usr/share/ai
+remove all files in ai directory,rm /usr/share/ai/*
+find all files with .ai extension,find . -name '*.ai'
+copy all .ai files to images,cp *.ai images/
+move all .eps files to images,mv *.eps images/
+create a directory named 'eps' in /usr/share,mkdir /usr/share/eps
+remove all files in eps directory,rm /usr/share/eps/*
+find all files with .eps extension,find . -name '*.eps'
+copy all .eps files to images,cp *.eps images/
+move all .odt files to documents,mv *.odt documents/
+create a directory named 'odt' in /usr/share,mkdir /usr/share/odt
+remove all files in odt directory,rm /usr/share/odt/*
+find all files with .odt extension,find . -name '*.odt'
+copy all .odt files to documents,cp *.odt documents/
+move all .rtf files to documents,mv *.rtf documents/
+create a directory named 'rtf' in /usr/share,mkdir /usr/share/rtf
+remove all files in rtf directory,rm /usr/share/rtf/*
+find all files with .rtf extension,find . -name '*.rtf'
+copy all .rtf files to documents,cp *.rtf documents/
+move all .txt files from notes to textfiles,mv notes/*.txt textfiles/
+create a directory named 'textfiles' in /srv,mkdir /srv/textfiles
+remove all files in textfiles directory,rm /srv/textfiles/*
+find all files with .txt extension,find . -name '*.txt'
+copy all .txt files to textfiles,cp *.txt textfiles/
+move all .csv files from data to backup,mv data/*.csv backup/
+create a directory named 'backup' in /srv,mkdir /srv/backup
+remove all files in backup directory,rm /srv/backup/*
+find all files with .csv extension,find . -name '*.csv'
+copy all .csv files to backup,cp *.csv backup/
+move all .json files from configs to backup,mv configs/*.json backup/
+create a directory named 'backup' in /opt,mkdir /opt/backup
+remove all files in backup directory,rm /opt/backup/*
+find all files with .json extension,find . -name '*.json'
+copy all .json files to backup,cp *.json backup/
+move all .txt files created today to today_txt/,find . -maxdepth 1 -name '*.txt' -newermt $(date +%F) -exec mv {} today_txt/ \;
+move all .jpg files modified yesterday to yesterdays_jpg/,find . -maxdepth 1 -name '*.jpg' -mtime 1 -exec mv {} yesterdays_jpg/ \;
+move all files created in the last 7 days to recent/,find . -maxdepth 1 -type f -ctime -7 -exec mv {} recent/ \;
+move all files older than 30 days to archive/,find . -maxdepth 1 -type f -mtime +30 -exec mv {} archive/ \;
+move all .log files from logs/ to old_logs/,mv logs/*.log old_logs/
+move all files starting with '2025_' to year2025/,mv 2025_* year2025/
+move all files ending with '_backup' to backups/,mv *_backup backups/
+move all files with a dash in the name to dashed_files/,find . -maxdepth 1 -type f -name '*-*' -exec mv {} dashed_files/ \;
+move all files with numbers in the name to numbered/,find . -maxdepth 1 -type f -regex '.*[0-9].*' -exec mv {} numbered/ \;
+move all .csv files from data/2025/ to data_csv/,mv data/2025/*.csv data_csv/
+move all .md files from docs/ to markdowns/,mv docs/*.md markdowns/
+move all .sh files from scripts/ to shell_scripts/,mv scripts/*.sh shell_scripts/
+move all .zip files from downloads/ to zips/,mv downloads/*.zip zips/
+move all .tar.gz files from archives/ to compressed/,mv archives/*.tar.gz compressed/
+move all .pdf files from reports/ to pdfs/,mv reports/*.pdf pdfs/
+move all .png files from images/2025/ to pngs/,mv images/2025/*.png pngs/
+move all .mp3 files from music/old/ to mp3s/,mv music/old/*.mp3 mp3s/
+move all .docx files from drafts/ to word_docs/,mv drafts/*.docx word_docs/
+move all .xls files from finance/ to excels/,mv finance/*.xls excels/
+move all .pptx files from slides/ to presentations/,mv slides/*.pptx presentations/
+move all .json files from configs/ to jsons/,mv configs/*.json jsons/
+move all .xml files from data/ to xmls/,mv data/*.xml xmls/
+move all .yml files from ci/ to yamls/,mv ci/*.yml yamls/
+move all .ini files from settings/ to inis/,mv settings/*.ini inis/
+move all .gif files from gifs/ to images/,mv gifs/*.gif images/
+move all .bmp files from bitmaps/ to bmps/,mv bitmaps/*.bmp bmps/
+move all .svg files from vectors/ to svgs/,mv vectors/*.svg svgs/
+move all .psd files from design/ to psds/,mv design/*.psd psds/
+move all .ai files from illustrator/ to ais/,mv illustrator/*.ai ais/
+move all .eps files from graphics/ to epss/,mv graphics/*.eps epss/
+move all .odt files from openoffice/ to odts/,mv openoffice/*.odt odts/
+move all .rtf files from richtext/ to rtfs/,mv richtext/*.rtf rtfs/
+move all .wav files from audio/ to wavs/,mv audio/*.wav wavs/
+move all .flac files from music/ to flacs/,mv music/*.flac flacs/
+move all .aac files from audio/ to aacs/,mv audio/*.aac aacs/
+move all .webm files from videos/ to webms/,mv videos/*.webm webms/
+move all .mov files from movies/ to movs/,mv movies/*.mov movs/
+move all .mkv files from movies/ to mkvs/,mv movies/*.mkv mkvs/
+move all .avi files from movies/ to avis/,mv movies/*.avi avis/
+move all .tar files from archives/ to tars/,mv archives/*.tar tars/
+move all .gz files from compressed/ to gzs/,mv compressed/*.gz gzs/
+move all .dat files from data/ to dats/,mv data/*.dat dats/
+move all .bak files from backups/ to baks/,mv backups/*.bak baks/
+move all .tmp files from temp/ to tmps/,mv temp/*.tmp tmps/
+move all .conf files from configs/ to confs/,mv configs/*.conf confs/
+move all .log files from logs/2025/ to logs2025/,mv logs/2025/*.log logs2025/
+move all .txt files from notes/2025/ to txts2025/,mv notes/2025/*.txt txts2025/
+move all .md files from docs/2025/ to mds2025/,mv docs/2025/*.md mds2025/
+move all .sh files from scripts/2025/ to shs2025/,mv scripts/2025/*.sh shs2025/
+move all .zip files from downloads/2025/ to zips2025/,mv downloads/2025/*.zip zips2025/
+move all .tar.gz files from archives/2025/ to compressed2025/,mv archives/2025/*.tar.gz compressed2025/
+move all .pdf files from reports/2025/ to pdfs2025/,mv reports/2025/*.pdf pdfs2025/
+move all .png files from images/2025/ to pngs2025/,mv images/2025/*.png pngs2025/
+move all .mp3 files from music/2025/ to mp3s2025/,mv music/2025/*.mp3 mp3s2025/
+move all .docx files from drafts/2025/ to word_docs2025/,mv drafts/2025/*.docx word_docs2025/
+move all .xls files from finance/2025/ to excels2025/,mv finance/2025/*.xls excels2025/
+move all .pptx files from slides/2025/ to presentations2025/,mv slides/2025/*.pptx presentations2025/
+move all .json files from configs/2025/ to jsons2025/,mv configs/2025/*.json jsons2025/
+move all .xml files from data/2025/ to xmls2025/,mv data/2025/*.xml xmls2025/
+move all .yml files from ci/2025/ to yamls2025/,mv ci/2025/*.yml yamls2025/
+move all .ini files from settings/2025/ to inis2025/,mv settings/2025/*.ini inis2025/
+move all .gif files from gifs/2025/ to images2025/,mv gifs/2025/*.gif images2025/
+move all .bmp files from bitmaps/2025/ to bmps2025/,mv bitmaps/2025/*.bmp bmps2025/
+move all .svg files from vectors/2025/ to svgs2025/,mv vectors/2025/*.svg svgs2025/
+move all .psd files from design/2025/ to psds2025/,mv design/2025/*.psd psds2025/
+move all .ai files from illustrator/2025/ to ais2025/,mv illustrator/2025/*.ai ais2025/
+move all .eps files from graphics/2025/ to epss2025/,mv graphics/2025/*.eps epss2025/
+move all .odt files from openoffice/2025/ to odts2025/,mv openoffice/2025/*.odt odts2025/
+move all .rtf files from richtext/2025/ to rtfs2025/,mv richtext/2025/*.rtf rtfs2025/
+move all .wav files from audio/2025/ to wavs2025/,mv audio/2025/*.wav wavs2025/
+move all .flac files from music/2025/ to flacs2025/,mv music/2025/*.flac flacs2025/
+move all .aac files from audio/2025/ to aacs2025/,mv audio/2025/*.aac aacs2025/
+move all .webm files from videos/2025/ to webms2025/,mv videos/2025/*.webm webms2025/
+move all .mov files from movies/2025/ to movs2025/,mv movies/2025/*.mov movs2025/
+move all .mkv files from movies/2025/ to mkvs2025/,mv movies/2025/*.mkv mkvs2025/
+move all .avi files from movies/2025/ to avis2025/,mv movies/2025/*.avi avis2025/
+move all .tar files from archives/2025/ to tars2025/,mv archives/2025/*.tar tars2025/
+move all .gz files from compressed/2025/ to gzs2025/,mv compressed/2025/*.gz gzs2025/
+move all .dat files from data/2025/ to dats2025/,mv data/2025/*.dat dats2025/
+move all .bak files from backups/2025/ to baks2025/,mv backups/2025/*.bak baks2025/
+move all .tmp files from temp/2025/ to tmps2025/,mv temp/2025/*.tmp tmps2025/
+move all .conf files from configs/2025/ to confs2025/,mv configs/2025/*.conf confs2025/
+move all files created in January 2025 to jan2025/,find . -maxdepth 1 -type f -newermt 2025-01-01 ! -newermt 2025-02-01 -exec mv {} jan2025/ \;
+move all files created in February 2025 to feb2025/,find . -maxdepth 1 -type f -newermt 2025-02-01 ! -newermt 2025-03-01 -exec mv {} feb2025/ \;
+move all files created in March 2025 to mar2025/,find . -maxdepth 1 -type f -newermt 2025-03-01 ! -newermt 2025-04-01 -exec mv {} mar2025/ \;
+move all files created in April 2025 to apr2025/,find . -maxdepth 1 -type f -newermt 2025-04-01 ! -newermt 2025-05-01 -exec mv {} apr2025/ \;
+move all files created in May 2025 to may2025/,find . -maxdepth 1 -type f -newermt 2025-05-01 ! -newermt 2025-06-01 -exec mv {} may2025/ \;
+move all files created in June 2025 to jun2025/,find . -maxdepth 1 -type f -newermt 2025-06-01 ! -newermt 2025-07-01 -exec mv {} jun2025/ \;
+move all files created in July 2025 to jul2025/,find . -maxdepth 1 -type f -newermt 2025-07-01 ! -newermt 2025-08-01 -exec mv {} jul2025/ \;
+move all files created in August 2025 to aug2025/,find . -maxdepth 1 -type f -newermt 2025-08-01 ! -newermt 2025-09-01 -exec mv {} aug2025/ \;
+move all files created in September 2025 to sep2025/,find . -maxdepth 1 -type f -newermt 2025-09-01 ! -newermt 2025-10-01 -exec mv {} sep2025/ \;
+move all files created in October 2025 to oct2025/,find . -maxdepth 1 -type f -newermt 2025-10-01 ! -newermt 2025-11-01 -exec mv {} oct2025/ \;
+move all files created in November 2025 to nov2025/,find . -maxdepth 1 -type f -newermt 2025-11-01 ! -newermt 2025-12-01 -exec mv {} nov2025/ \;
+move all files created in December 2025 to dec2025/,find . -maxdepth 1 -type f -newermt 2025-12-01 ! -newermt 2026-01-01 -exec mv {} dec2025/ \;
+rename all .txt files to .bak extension,for f in *.txt; do mv "$f" "${f%.txt}.bak"; done
+rename all .jpg files to .jpeg extension,for f in *.jpg; do mv "$f" "${f%.jpg}.jpeg"; done
+rename all .log files to .old extension,for f in *.log; do mv "$f" "${f%.log}.old"; done
+rename all .csv files to .tsv extension,for f in *.csv; do mv "$f" "${f%.csv}.tsv"; done
+rename all .md files to .markdown extension,for f in *.md; do mv "$f" "${f%.md}.markdown"; done
+rename all .sh files to .shell extension,for f in *.sh; do mv "$f" "${f%.sh}.shell"; done
+rename all .zip files to .archive extension,for f in *.zip; do mv "$f" "${f%.zip}.archive"; done
+rename all .tar.gz files to .tgz extension,for f in *.tar.gz; do mv "$f" "${f%.tar.gz}.tgz"; done
+rename all .pdf files to .doc extension,for f in *.pdf; do mv "$f" "${f%.pdf}.doc"; done
+rename all .png files to .image extension,for f in *.png; do mv "$f" "${f%.png}.image"; done
+rename all .mp3 files to .audio extension,for f in *.mp3; do mv "$f" "${f%.mp3}.audio"; done
+rename all .docx files to .word extension,for f in *.docx; do mv "$f" "${f%.docx}.word"; done
+rename all .xls files to .excel extension,for f in *.xls; do mv "$f" "${f%.xls}.excel"; done
+rename all .pptx files to .powerpoint extension,for f in *.pptx; do mv "$f" "${f%.pptx}.powerpoint"; done
+rename all .json files to .jsn extension,for f in *.json; do mv "$f" "${f%.json}.jsn"; done
+rename all .xml files to .x extension,for f in *.xml; do mv "$f" "${f%.xml}.x"; done
+rename all .yml files to .yaml extension,for f in *.yml; do mv "$f" "${f%.yml}.yaml"; done
+rename all .ini files to .configuration extension,for f in *.ini; do mv "$f" "${f%.ini}.configuration"; done
+rename all .gif files to .g extension,for f in *.gif; do mv "$f" "${f%.gif}.g"; done
+rename all .bmp files to .bitmap extension,for f in *.bmp; do mv "$f" "${f%.bmp}.bitmap"; done
+rename all .svg files to .vector extension,for f in *.svg; do mv "$f" "${f%.svg}.vector"; done
+rename all .psd files to .photoshop extension,for f in *.psd; do mv "$f" "${f%.psd}.photoshop"; done
+rename all .ai files to .illustrator extension,for f in *.ai; do mv "$f" "${f%.ai}.illustrator"; done
+rename all .eps files to .encapsulated extension,for f in *.eps; do mv "$f" "${f%.eps}.encapsulated"; done
+rename all .odt files to .openoffice extension,for f in *.odt; do mv "$f" "${f%.odt}.openoffice"; done
+rename all .rtf files to .richtext extension,for f in *.rtf; do mv "$f" "${f%.rtf}.richtext"; done
+rename all .wav files to .wave extension,for f in *.wav; do mv "$f" "${f%.wav}.wave"; done
+rename all .flac files to .lossless extension,for f in *.flac; do mv "$f" "${f%.flac}.lossless"; done
+rename all .aac files to .aac_audio extension,for f in *.aac; do mv "$f" "${f%.aac}.aac_audio"; done
+rename all .webm files to .webmovie extension,for f in *.webm; do mv "$f" "${f%.webm}.webmovie"; done
+rename all .mov files to .movie extension,for f in *.mov; do mv "$f" "${f%.mov}.movie"; done
+rename all .mkv files to .matroska extension,for f in *.mkv; do mv "$f" "${f%.mkv}.matroska"; done
+rename all .avi files to .avi_video extension,for f in *.avi; do mv "$f" "${f%.avi}.avi_video"; done
+rename all .tar files to .tarball extension,for f in *.tar; do mv "$f" "${f%.tar}.tarball"; done
+rename all .gz files to .gzip extension,for f in *.gz; do mv "$f" "${f%.gz}.gzip"; done
+rename all .dat files to .data extension,for f in *.dat; do mv "$f" "${f%.dat}.data"; done
+rename all .bak files to .backup extension,for f in *.bak; do mv "$f" "${f%.bak}.backup"; done
+rename all .tmp files to .temporary extension,for f in *.tmp; do mv "$f" "${f%.tmp}.temporary"; done
+rename all .conf files to .configuration extension,for f in *.conf; do mv "$f" "${f%.conf}.configuration"; done
+rename all files with spaces to underscores,for f in *' '*; do mv "$f" "${f// /_}"; done
+rename all files with dashes to underscores,for f in *-*; do mv "$f" "${f//-/_}"; done
+rename all files with uppercase to lowercase,for f in *; do mv "$f" "$(echo $f | tr 'A-Z' 'a-z')"; done
+rename all files with lowercase to uppercase,for f in *; do mv "$f" "$(echo $f | tr 'a-z' 'A-Z')"; done
+rename all files with .bak extension to .old,for f in *.bak; do mv "$f" "${f%.bak}.old"; done
+rename all files with .tmp extension to .bak,for f in *.tmp; do mv "$f" "${f%.tmp}.bak"; done
+rename all files with .log extension to .txt,for f in *.log; do mv "$f" "${f%.log}.txt"; done
+rename all files with .txt extension to .md,for f in *.txt; do mv "$f" "${f%.txt}.md"; done
+rename all files with .md extension to .txt,for f in *.md; do mv "$f" "${f%.md}.txt"; done
+rename all files with .csv extension to .bak,for f in *.csv; do mv "$f" "${f%.csv}.bak"; done
+rename all files with .json extension to .bak,for f in *.json; do mv "$f" "${f%.json}.bak"; done
+rename all files with .xml extension to .bak,for f in *.xml; do mv "$f" "${f%.xml}.bak"; done
+rename all files with .yml extension to .bak,for f in *.yml; do mv "$f" "${f%.yml}.bak"; done
+rename all files with .ini extension to .bak,for f in *.ini; do mv "$f" "${f%.ini}.bak"; done
+rename all files with .gif extension to .bak,for f in *.gif; do mv "$f" "${f%.gif}.bak"; done
+rename all files with .bmp extension to .bak,for f in *.bmp; do mv "$f" "${f%.bmp}.bak"; done
+rename all files with .svg extension to .bak,for f in *.svg; do mv "$f" "${f%.svg}.bak"; done
+rename all files with .psd extension to .bak,for f in *.psd; do mv "$f" "${f%.psd}.bak"; done
+rename all files with .ai extension to .bak,for f in *.ai; do mv "$f" "${f%.ai}.bak"; done
+rename all files with .eps extension to .bak,for f in *.eps; do mv "$f" "${f%.eps}.bak"; done
+rename all files with .odt extension to .bak,for f in *.odt; do mv "$f" "${f%.odt}.bak"; done
+rename all files with .rtf extension to .bak,for f in *.rtf; do mv "$f" "${f%.rtf}.bak"; done
+rename all files with .wav extension to .bak,for f in *.wav; do mv "$f" "${f%.wav}.bak"; done
+rename all files with .flac extension to .bak,for f in *.flac; do mv "$f" "${f%.flac}.bak"; done
+rename all files with .aac extension to .bak,for f in *.aac; do mv "$f" "${f%.aac}.bak"; done
+rename all files with .webm extension to .bak,for f in *.webm; do mv "$f" "${f%.webm}.bak"; done
+rename all files with .mov extension to .bak,for f in *.mov; do mv "$f" "${f%.mov}.bak"; done
+rename all files with .mkv extension to .bak,for f in *.mkv; do mv "$f" "${f%.mkv}.bak"; done
+rename all files with .avi extension to .bak,for f in *.avi; do mv "$f" "${f%.avi}.bak"; done
+rename all files with .tar extension to .bak,for f in *.tar; do mv "$f" "${f%.tar}.bak"; done
+rename all files with .gz extension to .bak,for f in *.gz; do mv "$f" "${f%.gz}.bak"; done
+rename all files with .dat extension to .bak,for f in *.dat; do mv "$f" "${f%.dat}.bak"; done
+rename all files with .conf extension to .bak,for f in *.conf; do mv "$f" "${f%.conf}.bak"; done
+Move all .png files from the Pictures directory and its subfolders into the folder called AllPNGs,find ~/Pictures -type f -name '*.png' -exec mv {} ~/AllPNGs/ \;
+Move all .mp4 files from Videos and all nested folders into the flat directory AllVideos,find ~/Videos -type f -name '*.mp4' -exec mv {} ~/AllVideos/ \;
+Move all .gif files from the Gifs folder tree into the GifsFlat directory,find ~/Gifs -type f -name '*.gif' -exec mv {} ~/GifsFlat/ \;
+Move all .pdf files from Documents and subfolders into the PDFs directory,find ~/Documents -type f -name '*.pdf' -exec mv {} ~/PDFs/ \;
+Move all .docx files from WorkDocs and all subfolders into the DocsFlat folder,find ~/WorkDocs -type f -name '*.docx' -exec mv {} ~/DocsFlat/ \;
+Move all .xlsx files from the Spreadsheets directory tree into AllSheets,find ~/Spreadsheets -type f -name '*.xlsx' -exec mv {} ~/AllSheets/ \;
+Move all .mp3 files from Music and its subfolders into the flat directory AllMP3s,find ~/Music -type f -name '*.mp3' -exec mv {} ~/AllMP3s/ \;
+Move all .wav files from Audio and all nested folders into the folder AllWAVs,find ~/Audio -type f -name '*.wav' -exec mv {} ~/AllWAVs/ \;
+Move all .zip files from Downloads and subfolders into the ZipsFlat directory,find ~/Downloads -type f -name '*.zip' -exec mv {} ~/ZipsFlat/ \;
+Move all .tar.gz files from Archives and all subfolders into the Tarballs directory,find ~/Archives -type f -name '*.tar.gz' -exec mv {} ~/Tarballs/ \;
+Move all .csv files from Data and its subfolders into the AllCSVs directory,find ~/Data -type f -name '*.csv' -exec mv {} ~/AllCSVs/ \;
+Move all .json files from Configs and all nested folders into the JSONsFlat folder,find ~/Configs -type f -name '*.json' -exec mv {} ~/JSONsFlat/ \;
+Move all .txt files from Notes and subfolders into the AllNotes directory,find ~/Notes -type f -name '*.txt' -exec mv {} ~/AllNotes/ \;
+Move all .pptx files from Presentations and all subfolders into the PPTsFlat directory,find ~/Presentations -type f -name '*.pptx' -exec mv {} ~/PPTsFlat/ \;
+Move all .md files from Markdown and its subfolders into the MarkdownFlat directory,find ~/Markdown -type f -name '*.md' -exec mv {} ~/MarkdownFlat/ \;
+Move all .xml files from XMLFiles and all nested folders into the XMLFlat directory,find ~/XMLFiles -type f -name '*.xml' -exec mv {} ~/XMLFlat/ \;
+Move all .yml files from YAMLConfigs and subfolders into the YMLFlat directory,find ~/YAMLConfigs -type f -name '*.yml' -exec mv {} ~/YMLFlat/ \;
+Move all .ini files from Settings and all subfolders into the INIFlat directory,find ~/Settings -type f -name '*.ini' -exec mv {} ~/INIFlat/ \;
+Move all .log files from Logs and its subfolders into the LogsFlat directory,find ~/Logs -type f -name '*.log' -exec mv {} ~/LogsFlat/ \;
+Move all .bak files from Backups and all nested folders into the BAKFlat directory,find ~/Backups -type f -name '*.bak' -exec mv {} ~/BAKFlat/ \;
+Move all .tmp files from Temp and subfolders into the TMPFlat directory,find ~/Temp -type f -name '*.tmp' -exec mv {} ~/TMPFlat/ \;
+Move all .dat files from DataFiles and all subfolders into the DATFlat directory,find ~/DataFiles -type f -name '*.dat' -exec mv {} ~/DATFlat/ \;
+Move all .svg files from SVGs and its subfolders into the SVGFlat directory,find ~/SVGs -type f -name '*.svg' -exec mv {} ~/SVGFlat/ \;
+Move all .psd files from Photoshop and all nested folders into the PSDFlat directory,find ~/Photoshop -type f -name '*.psd' -exec mv {} ~/PSDFlat/ \;
+Move all .ai files from Illustrator and subfolders into the AIFlat directory,find ~/Illustrator -type f -name '*.ai' -exec mv {} ~/AIFlat/ \;
+Move all .eps files from EPSFiles and all subfolders into the EPSFlat directory,find ~/EPSFiles -type f -name '*.eps' -exec mv {} ~/EPSFlat/ \;
+Move all .odt files from OpenDocs and its subfolders into the ODTFlat directory,find ~/OpenDocs -type f -name '*.odt' -exec mv {} ~/ODTFlat/ \;
+Move all .rtf files from RichText and all nested folders into the RTFFlat directory,find ~/RichText -type f -name '*.rtf' -exec mv {} ~/RTFFlat/ \;
+Move all .flac files from LosslessMusic and subfolders into the FLACFlat directory,find ~/LosslessMusic -type f -name '*.flac' -exec mv {} ~/FLACFlat/ \;
+Move all .aac files from AACMusic and all subfolders into the AACFlat directory,find ~/AACMusic -type f -name '*.aac' -exec mv {} ~/AACFlat/ \;
+Move all .webm files from WebMovies and its subfolders into the WEBMFlat directory,find ~/WebMovies -type f -name '*.webm' -exec mv {} ~/WEBMFlat/ \;
+Move all .mov files from MovieFiles and all nested folders into the MOVFlat directory,find ~/MovieFiles -type f -name '*.mov' -exec mv {} ~/MOVFlat/ \;
+Move all .mkv files from MKVMovies and subfolders into the MKVFlat directory,find ~/MKVMovies -type f -name '*.mkv' -exec mv {} ~/MKVFlat/ \;
+Move all .avi files from AVIMovies and all subfolders into the AVIFlat directory,find ~/AVIMovies -type f -name '*.avi' -exec mv {} ~/AVIFlat/ \;
+Move all .tar files from Tarballs and its subfolders into the TARFlat directory,find ~/Tarballs -type f -name '*.tar' -exec mv {} ~/TARFlat/ \;
+Move all .gz files from GZFiles and all nested folders into the GZFlat directory,find ~/GZFiles -type f -name '*.gz' -exec mv {} ~/GZFlat/ \;
+Move all .7z files from Archives7z and subfolders into the SevenZFlat directory,find ~/Archives7z -type f -name '*.7z' -exec mv {} ~/SevenZFlat/ \;
+Move all .rar files from RARArchives and all subfolders into the RARFlat directory,find ~/RARArchives -type f -name '*.rar' -exec mv {} ~/RARFlat/ \;
+Move all .mpg files from MPGMovies and its subfolders into the MPGFlat directory,find ~/MPGMovies -type f -name '*.mpg' -exec mv {} ~/MPGFlat/ \;
+Move all .mpeg files from MPEGMovies and all nested folders into the MPEGFlat directory,find ~/MPEGMovies -type f -name '*.mpeg' -exec mv {} ~/MPEGFlat/ \;
+Move all .ogg files from OGGMusic and subfolders into the OGGFlat directory,find ~/OGGMusic -type f -name '*.ogg' -exec mv {} ~/OGGFlat/ \;
+Move all .opus files from OpusMusic and all subfolders into the OPUSFlat directory,find ~/OpusMusic -type f -name '*.opus' -exec mv {} ~/OPUSFlat/ \;
+Move all .bmp files from Bitmaps and its subfolders into the BMPFlat directory,find ~/Bitmaps -type f -name '*.bmp' -exec mv {} ~/BMPFlat/ \;
+Move all .tiff files from TIFFs and all nested folders into the TIFFFlat directory,find ~/TIFFs -type f -name '*.tiff' -exec mv {} ~/TIFFFlat/ \;
+Move all .heic files from HEICPhotos and subfolders into the HEICFlat directory,find ~/HEICPhotos -type f -name '*.heic' -exec mv {} ~/HEICFlat/ \;
+Move all .apng files from APNGs and all subfolders into the APNGFlat directory,find ~/APNGs -type f -name '*.apng' -exec mv {} ~/APNGFlat/ \;
+Move all .cr2 files from CanonRAW and its subfolders into the CR2Flat directory,find ~/CanonRAW -type f -name '*.cr2' -exec mv {} ~/CR2Flat/ \;
+Move all .nef files from NikonRAW and all nested folders into the NEFFlat directory,find ~/NikonRAW -type f -name '*.nef' -exec mv {} ~/NEFFlat/ \;
+Move all .arw files from SonyRAW and subfolders into the ARWFlat directory,find ~/SonyRAW -type f -name '*.arw' -exec mv {} ~/ARWFlat/ \;
+Move all .dng files from DNGPhotos and all subfolders into the DNGFlat directory,find ~/DNGPhotos -type f -name '*.dng' -exec mv {} ~/DNGFlat/ \;
+Move all .svgz files from SVGZs and its subfolders into the SVGZFlat directory,find ~/SVGZs -type f -name '*.svgz' -exec mv {} ~/SVGZFlat/ \;
+Move all .ico files from Icons and all nested folders into the ICOFlat directory,find ~/Icons -type f -name '*.ico' -exec mv {} ~/ICOFlat/ \;
+Move all .jfif files from JFIFs and subfolders into the JFIFFlat directory,find ~/JFIFs -type f -name '*.jfif' -exec mv {} ~/JFIFFlat/ \;
+Move all .webp files from WebPImages and all subfolders into the WEBPFlat directory,find ~/WebPImages -type f -name '*.webp' -exec mv {} ~/WEBPFlat/ \;
+Move all .m4a files from M4AMusic and its subfolders into the M4AFlat directory,find ~/M4AMusic -type f -name '*.m4a' -exec mv {} ~/M4AFlat/ \;
+Move all .aac files from AACAudio and all nested folders into the AACAudioFlat directory,find ~/AACAudio -type f -name '*.aac' -exec mv {} ~/AACAudioFlat/ \;
+Move all .flv files from FLVVideos and subfolders into the FLVFlat directory,find ~/FLVVideos -type f -name '*.flv' -exec mv {} ~/FLVFlat/ \;
+Move all .3gp files from ThreeGPVideos and all subfolders into the ThreeGPFlat directory,find ~/ThreeGPVideos -type f -name '*.3gp' -exec mv {} ~/ThreeGPFlat/ \;
+Move all .m4v files from M4VMovies and its subfolders into the M4VFlat directory,find ~/M4VMovies -type f -name '*.m4v' -exec mv {} ~/M4VFlat/ \;
+Move all .asf files from ASFMovies and all nested folders into the ASFFlat directory,find ~/ASFMovies -type f -name '*.asf' -exec mv {} ~/ASFFlat/ \;
+Move all .vob files from VOBMovies and subfolders into the VOBFlat directory,find ~/VOBMovies -type f -name '*.vob' -exec mv {} ~/VOBFlat/ \;
+Move all .wmv files from WMVMovies and all subfolders into the WMVFlat directory,find ~/WMVMovies -type f -name '*.wmv' -exec mv {} ~/WMVFlat/ \;
+Move all .rm files from RealMedia and its subfolders into the RMFlat directory,find ~/RealMedia -type f -name '*.rm' -exec mv {} ~/RMFlat/ \;
+Move all .ram files from RealAudio and all nested folders into the RAMFlat directory,find ~/RealAudio -type f -name '*.ram' -exec mv {} ~/RAMFlat/ \;
+Move all .midi files from MIDIFiles and subfolders into the MIDIFLat directory,find ~/MIDIFiles -type f -name '*.midi' -exec mv {} ~/MIDIFLat/ \;
+Move all .mid files from MIDFiles and all subfolders into the MIDFlat directory,find ~/MIDFiles -type f -name '*.mid' -exec mv {} ~/MIDFlat/ \;
+Move all .aiff files from AIFFMusic and its subfolders into the AIFFFlat directory,find ~/AIFFMusic -type f -name '*.aiff' -exec mv {} ~/AIFFFlat/ \;
+Move all .au files from AUMusic and all nested folders into the AUFlat directory,find ~/AUMusic -type f -name '*.au' -exec mv {} ~/AUFlat/ \;
+Move all .mp2 files from MP2Music and subfolders into the MP2Flat directory,find ~/MP2Music -type f -name '*.mp2' -exec mv {} ~/MP2Flat/ \;
+Move all .amr files from AMRRecordings and all subfolders into the AMRFlat directory,find ~/AMRRecordings -type f -name '*.amr' -exec mv {} ~/AMRFlat/ \;
+Move all .caf files from CAFMusic and its subfolders into the CAFFlat directory,find ~/CAFMusic -type f -name '*.caf' -exec mv {} ~/CAFFlat/ \;
+Move all .ra files from RAMusic and all nested folders into the RAFlat directory,find ~/RAMusic -type f -name '*.ra' -exec mv {} ~/RAFlat/ \;
+Move all .mka files from MKAMusic and subfolders into the MKAFlat directory,find ~/MKAMusic -type f -name '*.mka' -exec mv {} ~/MKAFlat/ \;
+Move all .dsf files from DSFMusic and all subfolders into the DSFFlat directory,find ~/DSFMusic -type f -name '*.dsf' -exec mv {} ~/DSFFlat/ \;
+Move all .dff files from DFFMusic and its subfolders into the DFFFlat directory,find ~/DFFMusic -type f -name '*.dff' -exec mv {} ~/DFFFlat/ \;
+Move all .wv files from WVMusic and all nested folders into the WVFlat directory,find ~/WVMusic -type f -name '*.wv' -exec mv {} ~/WVFlat/ \;
+Move all .ape files from APEMusic and subfolders into the APEFlat directory,find ~/APEMusic -type f -name '*.ape' -exec mv {} ~/APEFlat/ \;
+Move all .mpc files from MPCMusic and all subfolders into the MPCFlat directory,find ~/MPCMusic -type f -name '*.mpc' -exec mv {} ~/MPCFlat/ \;
+Move all .tta files from TTAMusic and its subfolders into the TTAFlat directory,find ~/TTAMusic -type f -name '*.tta' -exec mv {} ~/TTAFlat/ \;
+Move all .oga files from OGAMusic and all nested folders into the OGAFlat directory,find ~/OGAMusic -type f -name '*.oga' -exec mv {} ~/OGAFlat/ \;
+Move all .spx files from SPXMusic and subfolders into the SPXFlat directory,find ~/SPXMusic -type f -name '*.spx' -exec mv {} ~/SPXFlat/ \;
+Move all .opus files from OpusAudio and all subfolders into the OpusAudioFlat directory,find ~/OpusAudio -type f -name '*.opus' -exec mv {} ~/OpusAudioFlat/ \;
+Move all .m3u files from Playlists and its subfolders into the M3UFlat directory,find ~/Playlists -type f -name '*.m3u' -exec mv {} ~/M3UFlat/ \;
+Move all .pls files from PLSPlaylists and all nested folders into the PLSFlat directory,find ~/PLSPlaylists -type f -name '*.pls' -exec mv {} ~/PLSFlat/ \;
+Move all .cue files from CueSheets and subfolders into the CUEFlat directory,find ~/CueSheets -type f -name '*.cue' -exec mv {} ~/CUEFlat/ \;

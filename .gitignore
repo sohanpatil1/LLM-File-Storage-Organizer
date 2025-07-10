@@ -1,0 +1,7 @@
+venv/
+model/
+Dialogue_*
+main.py
+.DS_Store
+**__pycache__/
+*.pyc
