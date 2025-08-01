@@ -5,3 +5,6 @@ main.py
 .DS_Store
 **__pycache__/
 *.pyc
+data/
+notes
+finetuned_shell_model/

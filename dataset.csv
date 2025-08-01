@@ -6,6 +6,7 @@ create a new directory named logs,mkdir logs
 remove the temp folder and its contents,rm -r temp/
 list all files in the current directory,ls
 list all hidden files in the current directory,ls -a
+Group all JPG files based on their creation date into year/month folders,"find . -type f -iname ""*.jpg"" -exec bash -c 'for f; do dir=$(date -r ""$f"" ""+%Y/%B"" | tr ""[:upper:]"" ""[:lower:]""); mkdir -p ""$dir""; mv ""$f"" ""$dir/""; done' bash {} +"
 move all .txt files to the docs folder,mv *.txt docs/
 copy all files from dir1 to dir2,cp dir1/* dir2/
 create nested folders a/b/c,mkdir -p a/b/c
@@ -46,8 +47,9 @@ copy image.jpg and rename it as image_backup.jpg,cp image.jpg image_backup.jpg
 find all .sh files in the current directory,find . -name '*.sh'
 search for the string 'error' in server.log,grep 'error' server.log
 make script.sh executable,chmod +x script.sh
-give read, write and execute permissions to all for file.sh,chmod 777 file.sh
+write and execute permissions to all for file.sh,chmod 777 file.sh
 display contents of todo.txt,cat todo.txt
+Group all JPEG files based on their creation date into year/month folders,"find . -type f -iname ""*.jpeg"" -exec bash -c 'for f; do dir=$(date -r ""$f"" ""+%Y/%B"" | tr ""[:upper:]"" ""[:lower:]""); mkdir -p ""$dir""; mv ""$f"" ""$dir/""; done' bash {} +"
 show the first 10 lines of log.txt,head log.txt
 show the last 5 lines of history.log,tail -n 5 history.log
 list all subdirectories in current directory,ls -d */
@@ -58,12 +60,12 @@ remove all files in the cache directory,rm cache/*
 find all files larger than 10MB,find . -type f -size +10M
 find all empty directories,find . -type d -empty
 copy file.txt and rename as file_copy.txt,cp file.txt file_copy.txt
-move all files except .md files to backup,mv !(*.md) backup/
+move all files except .md files to backup,mv ^*.md backup/
 find all files modified in the last 24 hours,find . -type f -mtime -1
 find all directories named 'test',find . -type d -name 'test'
 copy all files starting with 'data' to dataset,cp data* dataset/
 move all files from dirA to dirB,mv dirA/* dirB/
-remove all files in the current directory except .sh files,rm !(*.sh)
+remove all files in the current directory except .sh files,rm ^*.sh
 create a directory structure a/b/c/d,mkdir -p a/b/c/d
 copy all files and folders from src to dest,cp -r src/* dest/
 move all files from current directory to parent directory,mv * ../
@@ -79,7 +81,7 @@ find all files owned by user 'sohan',find . -user sohan
 copy all files from /var/log to logs,cp /var/log/* logs/
 move all .mp3 files to music directory,mv *.mp3 music/
 create a directory named '2025' inside documents,mkdir documents/2025
-remove all files in logs except error.log,rm logs/!(error.log)
+remove all files in logs except error.log,rm logs/^error.log
 find all files with 777 permissions,find . -type f -perm 0777
 find all files not accessed in last 30 days,find . -type f -atime +30
 copy all .zip files to archives,cp *.zip archives/
@@ -90,7 +92,7 @@ find all files with .conf extension,find . -name '*.conf'
 copy all .md files to docs,cp *.md docs/
 move all .xls files to spreadsheets,mv *.xls spreadsheets/
 create a directory named 'projects' in home directory,mkdir ~/projects
-remove all files in /tmp except .log files,rm /tmp/!(*.log)
+remove all files in /tmp except .log files,rm /tmp/^*.log
 find all files with 'TODO' in their name,find . -name '*TODO*'
 copy all .txt files from notes to backup,cp notes/*.txt backup/
 move all .docx files to documents,mv *.docx documents/
@@ -205,6 +207,7 @@ find all files with .rtf extension,find . -name '*.rtf'
 copy all .rtf files to documents,cp *.rtf documents/
 move all .txt files from notes to textfiles,mv notes/*.txt textfiles/
 create a directory named 'textfiles' in /srv,mkdir /srv/textfiles
+Group all PNG files based on their creation date into year/month folders,"find . -type f -iname ""*.png"" -exec bash -c 'for f; do dir=$(date -r ""$f"" ""+%Y/%B"" | tr ""[:upper:]"" ""[:lower:]""); mkdir -p ""$dir""; mv ""$f"" ""$dir/""; done' bash {} +"
 remove all files in textfiles directory,rm /srv/textfiles/*
 find all files with .txt extension,find . -name '*.txt'
 copy all .txt files to textfiles,cp *.txt textfiles/
@@ -469,3 +472,409 @@ Move all .opus files from OpusAudio and all subfolders into the OpusAudioFlat di
 Move all .m3u files from Playlists and its subfolders into the M3UFlat directory,find ~/Playlists -type f -name '*.m3u' -exec mv {} ~/M3UFlat/ \;
 Move all .pls files from PLSPlaylists and all nested folders into the PLSFlat directory,find ~/PLSPlaylists -type f -name '*.pls' -exec mv {} ~/PLSFlat/ \;
 Move all .cue files from CueSheets and subfolders into the CUEFlat directory,find ~/CueSheets -type f -name '*.cue' -exec mv {} ~/CUEFlat/ \;
+Move all .jpg files from Pictures created in January 2023 to 2023/January/ and rename as <day>.jpg,find ~/Pictures -type f -name '*.jpg' -newermt 2023-01-01 ! -newermt 2023-02-01 -exec sh -c 'd=$(date -r "$0" +%d); mv "$0" ~/2023/January/"$d".jpg' {} \;
+Move all .png files from Pictures created in February 2023 to 2023/February/ and rename as <day>.png,find ~/Pictures -type f -name '*.png' -newermt 2023-02-01 ! -newermt 2023-03-01 -exec sh -c 'd=$(date -r "$1" +%d); mv "$1" ~/2023/February/"$d".png' _ {} \;
+Move all .gif files from Gifs created in March 2023 to 2023/March/ and rename as <day>.gif,find ~/Gifs -type f -name '*.gif' -newermt 2023-03-01 ! -newermt 2023-04-01 -exec sh -c 'd=$(date -r "$1" +%d); mv "$1" ~/2023/March/"$d".gif' _ {} \;
+Move all .bmp files from Bitmaps created in April 2023 to 2023/April/ and rename as <day>.bmp,find ~/Bitmaps -type f -name '*.bmp' -newermt 2023-04-01 ! -newermt 2023-05-01 -exec sh -c 'd=$(date -r "$1" +%d); mv "$1" ~/2023/April/"$d".bmp' _ {} \;
+Move all .svg files from SVGs created in May 2023 to 2023/May/ and rename as <day>.svg,find ~/SVGs -type f -name '*.svg' -newermt 2023-05-01 ! -newermt 2023-06-01 -exec sh -c 'd=$(date -r "$0" +%d); mv "$0" ~/2023/May/"$d".svg' {} \;
+Group all files by year and month based on modification date,for file in *; do [ -f \"$file\" ] || continue; year=$(date -r \"$file\" +\"%Y\"); month=$(date -r \"$file\" +\"%b\"); mkdir -p \"$year/$month\"; mv \"$file\" \"$year/$month/\"; done"
+Move all PDF files to a folder called pdfs,mkdir -p pdfs && mv *.pdf pdfs/"
+Count how many .txt files are in the directory,ls *.txt | wc -l"
+List all files modified in the last 7 days,find . -type f -mtime -7"
+Delete all .log files larger than 10MB,find . -name '*.log' -size +10M -delete"
+Find all image files and move them to an 'images' folder,mkdir -p images && mv *.jpg *.jpeg *.png images/"
+Move all JPG files from subdirectories to the current directory,"find . -type f -iname ""*.jpg"" -exec mv {} . \;"
+Move all MP4 and MOV files from Downloads to ~/Videos,"mv ~/Downloads/*.{mp4,MOV} ~/Videos/"
+Move all PNG files from any subfolder into the parent folder,"find . -mindepth 2 -type f -iname ""*.png"" -exec mv {} . \;"
+Move all JPEGs from ~/NAS/Camera/2023 to ~/NAS/Camera,mv ~/NAS/Camera/2023/*.jpeg ~/NAS/Camera/
+Move all image files from Desktop to Pictures folder,"mv ~/Desktop/*.{jpg,jpeg,png} ~/Pictures/"
+Move all videos from child folders of ~/NAS to ~/NAS/Videos,"find ~/NAS -type f \( -iname ""*.mp4"" -o -iname ""*.mov"" \) -exec mv {} ~/NAS/Videos/ \;"
+Move all images to a folder named images in the home directory,"find . -type f \( -iname ""*.jpg"" -o -iname ""*.jpeg"" -o -iname ""*.png"" \) -exec mv {} ~/images/ \;"
+Move files larger than 500MB to ~/NAS/LargeVideos,find . -type f -size +500M -exec mv {} ~/NAS/LargeVideos/ \;
+Move all media files modified this month to ~/NAS/RecentMedia,"find . -type f \( -iname ""*.jpg"" -o -iname ""*.mp4"" -o -iname ""*.mov"" \) -newermt ""$(date +%Y-%m-01)"" -exec mv {} ~/NAS/RecentMedia/ \;"
+Move files created in 2022 to ~/NAS/Archive/2022,find . -type f -newermt 2022-01-01 ! -newermt 2023-01-01 -exec mv {} ~/NAS/Archive/2022/ \;
+Move all JPEG images from ~/NAS to ~/Downloads,mv ~/NAS/*.jpg ~/Downloads/
+Move all JPEG images from ~/NAS to ~/Desktop,mv ~/NAS/*.jpg ~/Desktop/
+Move all JPEG images from ~/NAS to ~/Media,mv ~/NAS/*.jpg ~/Media/
+Move all JPEG images from ~/NAS to ~/NAS/Camera,mv ~/NAS/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/NAS to ~/NAS/Sorted,mv ~/NAS/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/NAS to ~/NAS/Temp,mv ~/NAS/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/Downloads to ~/NAS,mv ~/Downloads/*.jpg ~/NAS/
+Move all JPEG images from ~/Downloads to ~/Desktop,mv ~/Downloads/*.jpg ~/Desktop/
+Move all JPEG images from ~/Downloads to ~/Media,mv ~/Downloads/*.jpg ~/Media/
+Move all JPEG images from ~/Downloads to ~/NAS/Camera,mv ~/Downloads/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/Downloads to ~/NAS/Sorted,mv ~/Downloads/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/Downloads to ~/NAS/Temp,mv ~/Downloads/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/Desktop to ~/NAS,mv ~/Desktop/*.jpg ~/NAS/
+Move all JPEG images from ~/Desktop to ~/Downloads,mv ~/Desktop/*.jpg ~/Downloads/
+Move all JPEG images from ~/Desktop to ~/Media,mv ~/Desktop/*.jpg ~/Media/
+Move all JPEG images from ~/Desktop to ~/NAS/Camera,mv ~/Desktop/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/Desktop to ~/NAS/Sorted,mv ~/Desktop/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/Desktop to ~/NAS/Temp,mv ~/Desktop/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/Media to ~/NAS,mv ~/Media/*.jpg ~/NAS/
+Move all JPEG images from ~/Media to ~/Downloads,mv ~/Media/*.jpg ~/Downloads/
+Move all JPEG images from ~/Media to ~/Desktop,mv ~/Media/*.jpg ~/Desktop/
+Move all JPEG images from ~/Media to ~/NAS/Camera,mv ~/Media/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/Media to ~/NAS/Sorted,mv ~/Media/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/Media to ~/NAS/Temp,mv ~/Media/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Camera to ~/NAS,mv ~/NAS/Camera/*.jpg ~/NAS/
+Move all JPEG images from ~/NAS/Camera to ~/Downloads,mv ~/NAS/Camera/*.jpg ~/Downloads/
+Move all JPEG images from ~/NAS/Camera to ~/Desktop,mv ~/NAS/Camera/*.jpg ~/Desktop/
+Move all JPEG images from ~/NAS/Camera to ~/Media,mv ~/NAS/Camera/*.jpg ~/Media/
+Move all JPEG images from ~/NAS/Camera to ~/NAS/Sorted,mv ~/NAS/Camera/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/NAS/Camera to ~/NAS/Temp,mv ~/NAS/Camera/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS,mv ~/NAS/Sorted/*.jpg ~/NAS/
+Move all JPEG images from ~/NAS/Sorted to ~/Downloads,mv ~/NAS/Sorted/*.jpg ~/Downloads/
+Move all JPEG images from ~/NAS/Sorted to ~/Desktop,mv ~/NAS/Sorted/*.jpg ~/Desktop/
+Move all JPEG images from ~/NAS/Sorted to ~/Media,mv ~/NAS/Sorted/*.jpg ~/Media/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS/Camera,mv ~/NAS/Sorted/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS/Temp,mv ~/NAS/Sorted/*.jpg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Temp to ~/NAS,mv ~/NAS/Temp/*.jpg ~/NAS/
+Move all JPEG images from ~/NAS/Temp to ~/Downloads,mv ~/NAS/Temp/*.jpg ~/Downloads/
+Move all JPEG images from ~/NAS/Temp to ~/Desktop,mv ~/NAS/Temp/*.jpg ~/Desktop/
+Move all JPEG images from ~/NAS/Temp to ~/Media,mv ~/NAS/Temp/*.jpg ~/Media/
+Move all JPEG images from ~/NAS/Temp to ~/NAS/Camera,mv ~/NAS/Temp/*.jpg ~/NAS/Camera/
+Move all JPEG images from ~/NAS/Temp to ~/NAS/Sorted,mv ~/NAS/Temp/*.jpg ~/NAS/Sorted/
+Move all JPEG images from ~/NAS to ~/Downloads,mv ~/NAS/*.jpeg ~/Downloads/
+Move all JPEG images from ~/NAS to ~/Desktop,mv ~/NAS/*.jpeg ~/Desktop/
+Move all JPEG images from ~/NAS to ~/Media,mv ~/NAS/*.jpeg ~/Media/
+Move all JPEG images from ~/NAS to ~/NAS/Camera,mv ~/NAS/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/NAS to ~/NAS/Sorted,mv ~/NAS/*.jpeg ~/NAS/Sorted/
+Move all JPEG images from ~/NAS to ~/NAS/Temp,mv ~/NAS/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/Downloads to ~/NAS,mv ~/Downloads/*.jpeg ~/NAS/
+Move all JPEG images from ~/Downloads to ~/Desktop,mv ~/Downloads/*.jpeg ~/Desktop/
+Move all JPEG images from ~/Downloads to ~/Media,mv ~/Downloads/*.jpeg ~/Media/
+Move all JPEG images from ~/Downloads to ~/NAS/Camera,mv ~/Downloads/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/Downloads to ~/NAS/Sorted,mv ~/Downloads/*.jpeg ~/NAS/Sorted/
+Move all JPEG images from ~/Downloads to ~/NAS/Temp,mv ~/Downloads/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/Desktop to ~/NAS,mv ~/Desktop/*.jpeg ~/NAS/
+Move all JPEG images from ~/Desktop to ~/Downloads,mv ~/Desktop/*.jpeg ~/Downloads/
+Move all JPEG images from ~/Desktop to ~/Media,mv ~/Desktop/*.jpeg ~/Media/
+Move all JPEG images from ~/Desktop to ~/NAS/Camera,mv ~/Desktop/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/Desktop to ~/NAS/Sorted,mv ~/Desktop/*.jpeg ~/NAS/Sorted/
+Move all JPEG images from ~/Desktop to ~/NAS/Temp,mv ~/Desktop/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/Media to ~/NAS,mv ~/Media/*.jpeg ~/NAS/
+Move all JPEG images from ~/Media to ~/Downloads,mv ~/Media/*.jpeg ~/Downloads/
+Move all JPEG images from ~/Media to ~/Desktop,mv ~/Media/*.jpeg ~/Desktop/
+Move all JPEG images from ~/Media to ~/NAS/Camera,mv ~/Media/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/Media to ~/NAS/Sorted,mv ~/Media/*.jpeg ~/NAS/Sorted/
+Group all MP4 files based on their creation date into year/month folders,"find . -type f -iname ""*.mp4"" -exec bash -c 'for f; do dir=$(date -r ""$f"" ""+%Y/%B"" | tr ""[:upper:]"" ""[:lower:]""); mkdir -p ""$dir""; mv ""$f"" ""$dir/""; done' bash {} +"
+Move all JPEG images from ~/Media to ~/NAS/Temp,mv ~/Media/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Camera to ~/NAS,mv ~/NAS/Camera/*.jpeg ~/NAS/
+Move all JPEG images from ~/NAS/Camera to ~/Downloads,mv ~/NAS/Camera/*.jpeg ~/Downloads/
+Move all JPEG images from ~/NAS/Camera to ~/Desktop,mv ~/NAS/Camera/*.jpeg ~/Desktop/
+Move all JPEG images from ~/NAS/Camera to ~/Media,mv ~/NAS/Camera/*.jpeg ~/Media/
+Move all JPEG images from ~/NAS/Camera to ~/NAS/Sorted,mv ~/NAS/Camera/*.jpeg ~/NAS/Sorted/
+Move all JPEG images from ~/NAS/Camera to ~/NAS/Temp,mv ~/NAS/Camera/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS,mv ~/NAS/Sorted/*.jpeg ~/NAS/
+Move all JPEG images from ~/NAS/Sorted to ~/Downloads,mv ~/NAS/Sorted/*.jpeg ~/Downloads/
+Move all JPEG images from ~/NAS/Sorted to ~/Desktop,mv ~/NAS/Sorted/*.jpeg ~/Desktop/
+Move all JPEG images from ~/NAS/Sorted to ~/Media,mv ~/NAS/Sorted/*.jpeg ~/Media/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS/Camera,mv ~/NAS/Sorted/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/NAS/Sorted to ~/NAS/Temp,mv ~/NAS/Sorted/*.jpeg ~/NAS/Temp/
+Move all JPEG images from ~/NAS/Temp to ~/NAS,mv ~/NAS/Temp/*.jpeg ~/NAS/
+Move all JPEG images from ~/NAS/Temp to ~/Downloads,mv ~/NAS/Temp/*.jpeg ~/Downloads/
+Move all JPEG images from ~/NAS/Temp to ~/Desktop,mv ~/NAS/Temp/*.jpeg ~/Desktop/
+Move all JPEG images from ~/NAS/Temp to ~/Media,mv ~/NAS/Temp/*.jpeg ~/Media/
+Move all JPEG images from ~/NAS/Temp to ~/NAS/Camera,mv ~/NAS/Temp/*.jpeg ~/NAS/Camera/
+Move all JPEG images from ~/NAS/Temp to ~/NAS/Sorted,mv ~/NAS/Temp/*.jpeg ~/NAS/Sorted/
+Move all PNG images from ~/NAS to ~/Downloads,mv ~/NAS/*.png ~/Downloads/
+Move all PNG images from ~/NAS to ~/Desktop,mv ~/NAS/*.png ~/Desktop/
+Move all PNG images from ~/NAS to ~/Media,mv ~/NAS/*.png ~/Media/
+Move all PNG images from ~/NAS to ~/NAS/Camera,mv ~/NAS/*.png ~/NAS/Camera/
+Move all PNG images from ~/NAS to ~/NAS/Sorted,mv ~/NAS/*.png ~/NAS/Sorted/
+Move all PNG images from ~/NAS to ~/NAS/Temp,mv ~/NAS/*.png ~/NAS/Temp/
+Move all PNG images from ~/Downloads to ~/NAS,mv ~/Downloads/*.png ~/NAS/
+Move all PNG images from ~/Downloads to ~/Desktop,mv ~/Downloads/*.png ~/Desktop/
+Move all PNG images from ~/Downloads to ~/Media,mv ~/Downloads/*.png ~/Media/
+Move all PNG images from ~/Downloads to ~/NAS/Camera,mv ~/Downloads/*.png ~/NAS/Camera/
+Move all PNG images from ~/Downloads to ~/NAS/Sorted,mv ~/Downloads/*.png ~/NAS/Sorted/
+Move all PNG images from ~/Downloads to ~/NAS/Temp,mv ~/Downloads/*.png ~/NAS/Temp/
+Move all PNG images from ~/Desktop to ~/NAS,mv ~/Desktop/*.png ~/NAS/
+Move all PNG images from ~/Desktop to ~/Downloads,mv ~/Desktop/*.png ~/Downloads/
+Move all PNG images from ~/Desktop to ~/Media,mv ~/Desktop/*.png ~/Media/
+Move all PNG images from ~/Desktop to ~/NAS/Camera,mv ~/Desktop/*.png ~/NAS/Camera/
+Move all PNG images from ~/Desktop to ~/NAS/Sorted,mv ~/Desktop/*.png ~/NAS/Sorted/
+Move all PNG images from ~/Desktop to ~/NAS/Temp,mv ~/Desktop/*.png ~/NAS/Temp/
+Move all PNG images from ~/Media to ~/NAS,mv ~/Media/*.png ~/NAS/
+Move all PNG images from ~/Media to ~/Downloads,mv ~/Media/*.png ~/Downloads/
+Move all PNG images from ~/Media to ~/Desktop,mv ~/Media/*.png ~/Desktop/
+Move all PNG images from ~/Media to ~/NAS/Camera,mv ~/Media/*.png ~/NAS/Camera/
+Move all PNG images from ~/Media to ~/NAS/Sorted,mv ~/Media/*.png ~/NAS/Sorted/
+Move all PNG images from ~/Media to ~/NAS/Temp,mv ~/Media/*.png ~/NAS/Temp/
+Move all PNG images from ~/NAS/Camera to ~/NAS,mv ~/NAS/Camera/*.png ~/NAS/
+Move all PNG images from ~/NAS/Camera to ~/Downloads,mv ~/NAS/Camera/*.png ~/Downloads/
+Move all PNG images from ~/NAS/Camera to ~/Desktop,mv ~/NAS/Camera/*.png ~/Desktop/
+Move all PNG images from ~/NAS/Camera to ~/Media,mv ~/NAS/Camera/*.png ~/Media/
+Move all PNG images from ~/NAS/Camera to ~/NAS/Sorted,mv ~/NAS/Camera/*.png ~/NAS/Sorted/
+Move all PNG images from ~/NAS/Camera to ~/NAS/Temp,mv ~/NAS/Camera/*.png ~/NAS/Temp/
+Move all PNG images from ~/NAS/Sorted to ~/NAS,mv ~/NAS/Sorted/*.png ~/NAS/
+Move all PNG images from ~/NAS/Sorted to ~/Downloads,mv ~/NAS/Sorted/*.png ~/Downloads/
+Move all PNG images from ~/NAS/Sorted to ~/Desktop,mv ~/NAS/Sorted/*.png ~/Desktop/
+Move all PNG images from ~/NAS/Sorted to ~/Media,mv ~/NAS/Sorted/*.png ~/Media/
+Move all PNG images from ~/NAS/Sorted to ~/NAS/Camera,mv ~/NAS/Sorted/*.png ~/NAS/Camera/
+Move all PNG images from ~/NAS/Sorted to ~/NAS/Temp,mv ~/NAS/Sorted/*.png ~/NAS/Temp/
+Move all PNG images from ~/NAS/Temp to ~/NAS,mv ~/NAS/Temp/*.png ~/NAS/
+Move all PNG images from ~/NAS/Temp to ~/Downloads,mv ~/NAS/Temp/*.png ~/Downloads/
+Move all PNG images from ~/NAS/Temp to ~/Desktop,mv ~/NAS/Temp/*.png ~/Desktop/
+Move all PNG images from ~/NAS/Temp to ~/Media,mv ~/NAS/Temp/*.png ~/Media/
+Move all PNG images from ~/NAS/Temp to ~/NAS/Camera,mv ~/NAS/Temp/*.png ~/NAS/Camera/
+Move all PNG images from ~/NAS/Temp to ~/NAS/Sorted,mv ~/NAS/Temp/*.png ~/NAS/Sorted/
+Move all MP4 videos from ~/NAS to ~/Downloads,mv ~/NAS/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/NAS to ~/Desktop,mv ~/NAS/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/NAS to ~/Media,mv ~/NAS/*.mp4 ~/Media/
+Move all MP4 videos from ~/NAS to ~/NAS/Camera,mv ~/NAS/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/NAS to ~/NAS/Sorted,mv ~/NAS/*.mp4 ~/NAS/Sorted/
+Move all MP4 videos from ~/NAS to ~/NAS/Temp,mv ~/NAS/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/Downloads to ~/NAS,mv ~/Downloads/*.mp4 ~/NAS/
+Move all MP4 videos from ~/Downloads to ~/Desktop,mv ~/Downloads/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/Downloads to ~/Media,mv ~/Downloads/*.mp4 ~/Media/
+Move all MP4 videos from ~/Downloads to ~/NAS/Camera,mv ~/Downloads/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/Downloads to ~/NAS/Sorted,mv ~/Downloads/*.mp4 ~/NAS/Sorted/
+Move all MP4 videos from ~/Downloads to ~/NAS/Temp,mv ~/Downloads/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/Desktop to ~/NAS,mv ~/Desktop/*.mp4 ~/NAS/
+Move all MP4 videos from ~/Desktop to ~/Downloads,mv ~/Desktop/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/Desktop to ~/Media,mv ~/Desktop/*.mp4 ~/Media/
+Move all MP4 videos from ~/Desktop to ~/NAS/Camera,mv ~/Desktop/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/Desktop to ~/NAS/Sorted,mv ~/Desktop/*.mp4 ~/NAS/Sorted/
+Move all MP4 videos from ~/Desktop to ~/NAS/Temp,mv ~/Desktop/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/Media to ~/NAS,mv ~/Media/*.mp4 ~/NAS/
+Move all MP4 videos from ~/Media to ~/Downloads,mv ~/Media/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/Media to ~/Desktop,mv ~/Media/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/Media to ~/NAS/Camera,mv ~/Media/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/Media to ~/NAS/Sorted,mv ~/Media/*.mp4 ~/NAS/Sorted/
+Move all MP4 videos from ~/Media to ~/NAS/Temp,mv ~/Media/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/NAS/Camera to ~/NAS,mv ~/NAS/Camera/*.mp4 ~/NAS/
+Move all MP4 videos from ~/NAS/Camera to ~/Downloads,mv ~/NAS/Camera/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/NAS/Camera to ~/Desktop,mv ~/NAS/Camera/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/NAS/Camera to ~/Media,mv ~/NAS/Camera/*.mp4 ~/Media/
+Move all MP4 videos from ~/NAS/Camera to ~/NAS/Sorted,mv ~/NAS/Camera/*.mp4 ~/NAS/Sorted/
+Move all MP4 videos from ~/NAS/Camera to ~/NAS/Temp,mv ~/NAS/Camera/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/NAS/Sorted to ~/NAS,mv ~/NAS/Sorted/*.mp4 ~/NAS/
+Move all MP4 videos from ~/NAS/Sorted to ~/Downloads,mv ~/NAS/Sorted/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/NAS/Sorted to ~/Desktop,mv ~/NAS/Sorted/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/NAS/Sorted to ~/Media,mv ~/NAS/Sorted/*.mp4 ~/Media/
+Move all MP4 videos from ~/NAS/Sorted to ~/NAS/Camera,mv ~/NAS/Sorted/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/NAS/Sorted to ~/NAS/Temp,mv ~/NAS/Sorted/*.mp4 ~/NAS/Temp/
+Move all MP4 videos from ~/NAS/Temp to ~/NAS,mv ~/NAS/Temp/*.mp4 ~/NAS/
+Move all MP4 videos from ~/NAS/Temp to ~/Downloads,mv ~/NAS/Temp/*.mp4 ~/Downloads/
+Move all MP4 videos from ~/NAS/Temp to ~/Desktop,mv ~/NAS/Temp/*.mp4 ~/Desktop/
+Move all MP4 videos from ~/NAS/Temp to ~/Media,mv ~/NAS/Temp/*.mp4 ~/Media/
+Move all MP4 videos from ~/NAS/Temp to ~/NAS/Camera,mv ~/NAS/Temp/*.mp4 ~/NAS/Camera/
+Move all MP4 videos from ~/NAS/Temp to ~/NAS/Sorted,mv ~/NAS/Temp/*.mp4 ~/NAS/Sorted/
+Move all MOV videos from ~/NAS to ~/Downloads,mv ~/NAS/*.mov ~/Downloads/
+Move all MOV videos from ~/NAS to ~/Desktop,mv ~/NAS/*.mov ~/Desktop/
+Move all MOV videos from ~/NAS to ~/Media,mv ~/NAS/*.mov ~/Media/
+Move all MOV videos from ~/NAS to ~/NAS/Camera,mv ~/NAS/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/NAS to ~/NAS/Sorted,mv ~/NAS/*.mov ~/NAS/Sorted/
+Move all MOV videos from ~/NAS to ~/NAS/Temp,mv ~/NAS/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/Downloads to ~/NAS,mv ~/Downloads/*.mov ~/NAS/
+Move all MOV videos from ~/Downloads to ~/Desktop,mv ~/Downloads/*.mov ~/Desktop/
+Move all MOV videos from ~/Downloads to ~/Media,mv ~/Downloads/*.mov ~/Media/
+Move all MOV videos from ~/Downloads to ~/NAS/Camera,mv ~/Downloads/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/Downloads to ~/NAS/Sorted,mv ~/Downloads/*.mov ~/NAS/Sorted/
+Move all MOV videos from ~/Downloads to ~/NAS/Temp,mv ~/Downloads/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/Desktop to ~/NAS,mv ~/Desktop/*.mov ~/NAS/
+Move all MOV videos from ~/Desktop to ~/Downloads,mv ~/Desktop/*.mov ~/Downloads/
+Move all MOV videos from ~/Desktop to ~/Media,mv ~/Desktop/*.mov ~/Media/
+Move all MOV videos from ~/Desktop to ~/NAS/Camera,mv ~/Desktop/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/Desktop to ~/NAS/Sorted,mv ~/Desktop/*.mov ~/NAS/Sorted/
+Move all MOV videos from ~/Desktop to ~/NAS/Temp,mv ~/Desktop/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/Media to ~/NAS,mv ~/Media/*.mov ~/NAS/
+Move all MOV videos from ~/Media to ~/Downloads,mv ~/Media/*.mov ~/Downloads/
+Move all MOV videos from ~/Media to ~/Desktop,mv ~/Media/*.mov ~/Desktop/
+Move all MOV videos from ~/Media to ~/NAS/Camera,mv ~/Media/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/Media to ~/NAS/Sorted,mv ~/Media/*.mov ~/NAS/Sorted/
+Move all MOV videos from ~/Media to ~/NAS/Temp,mv ~/Media/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/NAS/Camera to ~/NAS,mv ~/NAS/Camera/*.mov ~/NAS/
+Move all MOV videos from ~/NAS/Camera to ~/Downloads,mv ~/NAS/Camera/*.mov ~/Downloads/
+Move all MOV videos from ~/NAS/Camera to ~/Desktop,mv ~/NAS/Camera/*.mov ~/Desktop/
+Move all MOV videos from ~/NAS/Camera to ~/Media,mv ~/NAS/Camera/*.mov ~/Media/
+Move all MOV videos from ~/NAS/Camera to ~/NAS/Sorted,mv ~/NAS/Camera/*.mov ~/NAS/Sorted/
+Move all MOV videos from ~/NAS/Camera to ~/NAS/Temp,mv ~/NAS/Camera/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/NAS/Sorted to ~/NAS,mv ~/NAS/Sorted/*.mov ~/NAS/
+Move all MOV videos from ~/NAS/Sorted to ~/Downloads,mv ~/NAS/Sorted/*.mov ~/Downloads/
+Move all MOV videos from ~/NAS/Sorted to ~/Desktop,mv ~/NAS/Sorted/*.mov ~/Desktop/
+Move all MOV videos from ~/NAS/Sorted to ~/Media,mv ~/NAS/Sorted/*.mov ~/Media/
+Move all MOV videos from ~/NAS/Sorted to ~/NAS/Camera,mv ~/NAS/Sorted/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/NAS/Sorted to ~/NAS/Temp,mv ~/NAS/Sorted/*.mov ~/NAS/Temp/
+Move all MOV videos from ~/NAS/Temp to ~/NAS,mv ~/NAS/Temp/*.mov ~/NAS/
+Move all MOV videos from ~/NAS/Temp to ~/Downloads,mv ~/NAS/Temp/*.mov ~/Downloads/
+Move all MOV videos from ~/NAS/Temp to ~/Desktop,mv ~/NAS/Temp/*.mov ~/Desktop/
+Move all MOV videos from ~/NAS/Temp to ~/Media,mv ~/NAS/Temp/*.mov ~/Media/
+Move all MOV videos from ~/NAS/Temp to ~/NAS/Camera,mv ~/NAS/Temp/*.mov ~/NAS/Camera/
+Move all MOV videos from ~/NAS/Temp to ~/NAS/Sorted,mv ~/NAS/Temp/*.mov ~/NAS/Sorted/
+Move all MP4 files from march 2022 to 2022/march/,"mkdir -p 2022/march && find . -type f -iname ""*.mp4"" -newermt ""2022-03-01"" ! -newermt ""2022-04-01"" -exec mv {} 2022/march/ \;"
+Move all MOV files from march 2022 to 2022/march/,"mkdir -p 2022/march && find . -type f -iname ""*.mov"" -newermt ""2022-03-01"" ! -newermt ""2022-04-01"" -exec mv {} 2022/march/ \;"
+Move all JPG files from april 2022 to 2022/april/,"mkdir -p 2022/april && find . -type f -iname ""*.jpg"" -newermt ""2022-04-01"" ! -newermt ""2022-05-01"" -exec mv {} 2022/april/ \;"
+Move all JPEG files from april 2022 to 2022/april/,"mkdir -p 2022/april && find . -type f -iname ""*.jpeg"" -newermt ""2022-04-01"" ! -newermt ""2022-05-01"" -exec mv {} 2022/april/ \;"
+Move all PNG files from april 2022 to 2022/april/,"mkdir -p 2022/april && find . -type f -iname ""*.png"" -newermt ""2022-04-01"" ! -newermt ""2022-05-01"" -exec mv {} 2022/april/ \;"
+Move all MP4 files from april 2022 to 2022/april/,"mkdir -p 2022/april && find . -type f -iname ""*.mp4"" -newermt ""2022-04-01"" ! -newermt ""2022-05-01"" -exec mv {} 2022/april/ \;"
+Move all MOV files from april 2022 to 2022/april/,"mkdir -p 2022/april && find . -type f -iname ""*.mov"" -newermt ""2022-04-01"" ! -newermt ""2022-05-01"" -exec mv {} 2022/april/ \;"
+Move all JPG files from may 2022 to 2022/may/,"mkdir -p 2022/may && find . -type f -iname ""*.jpg"" -newermt ""2022-05-01"" ! -newermt ""2022-06-01"" -exec mv {} 2022/may/ \;"
+Move all JPEG files from may 2022 to 2022/may/,"mkdir -p 2022/may && find . -type f -iname ""*.jpeg"" -newermt ""2022-05-01"" ! -newermt ""2022-06-01"" -exec mv {} 2022/may/ \;"
+Move all PNG files from may 2022 to 2022/may/,"mkdir -p 2022/may && find . -type f -iname ""*.png"" -newermt ""2022-05-01"" ! -newermt ""2022-06-01"" -exec mv {} 2022/may/ \;"
+Move all MP4 files from may 2022 to 2022/may/,"mkdir -p 2022/may && find . -type f -iname ""*.mp4"" -newermt ""2022-05-01"" ! -newermt ""2022-06-01"" -exec mv {} 2022/may/ \;"
+Move all MOV files from may 2022 to 2022/may/,"mkdir -p 2022/may && find . -type f -iname ""*.mov"" -newermt ""2022-05-01"" ! -newermt ""2022-06-01"" -exec mv {} 2022/may/ \;"
+Move all JPG files from june 2022 to 2022/june/,"mkdir -p 2022/june && find . -type f -iname ""*.jpg"" -newermt ""2022-06-01"" ! -newermt ""2022-07-01"" -exec mv {} 2022/june/ \;"
+Move all JPEG files from june 2022 to 2022/june/,"mkdir -p 2022/june && find . -type f -iname ""*.jpeg"" -newermt ""2022-06-01"" ! -newermt ""2022-07-01"" -exec mv {} 2022/june/ \;"
+Move all PNG files from june 2022 to 2022/june/,"mkdir -p 2022/june && find . -type f -iname ""*.png"" -newermt ""2022-06-01"" ! -newermt ""2022-07-01"" -exec mv {} 2022/june/ \;"
+Move all MP4 files from june 2022 to 2022/june/,"mkdir -p 2022/june && find . -type f -iname ""*.mp4"" -newermt ""2022-06-01"" ! -newermt ""2022-07-01"" -exec mv {} 2022/june/ \;"
+Move all MOV files from june 2022 to 2022/june/,"mkdir -p 2022/june && find . -type f -iname ""*.mov"" -newermt ""2022-06-01"" ! -newermt ""2022-07-01"" -exec mv {} 2022/june/ \;"
+Move all JPG files from july 2022 to 2022/july/,"mkdir -p 2022/july && find . -type f -iname ""*.jpg"" -newermt ""2022-07-01"" ! -newermt ""2022-08-01"" -exec mv {} 2022/july/ \;"
+Move all JPEG files from july 2022 to 2022/july/,"mkdir -p 2022/july && find . -type f -iname ""*.jpeg"" -newermt ""2022-07-01"" ! -newermt ""2022-08-01"" -exec mv {} 2022/july/ \;"
+Move all PNG files from july 2022 to 2022/july/,"mkdir -p 2022/july && find . -type f -iname ""*.png"" -newermt ""2022-07-01"" ! -newermt ""2022-08-01"" -exec mv {} 2022/july/ \;"
+Move all MP4 files from july 2022 to 2022/july/,"mkdir -p 2022/july && find . -type f -iname ""*.mp4"" -newermt ""2022-07-01"" ! -newermt ""2022-08-01"" -exec mv {} 2022/july/ \;"
+Move all MOV files from july 2022 to 2022/july/,"mkdir -p 2022/july && find . -type f -iname ""*.mov"" -newermt ""2022-07-01"" ! -newermt ""2022-08-01"" -exec mv {} 2022/july/ \;"
+Move all JPG files from august 2022 to 2022/august/,"mkdir -p 2022/august && find . -type f -iname ""*.jpg"" -newermt ""2022-08-01"" ! -newermt ""2022-09-01"" -exec mv {} 2022/august/ \;"
+Move all JPEG files from august 2022 to 2022/august/,"mkdir -p 2022/august && find . -type f -iname ""*.jpeg"" -newermt ""2022-08-01"" ! -newermt ""2022-09-01"" -exec mv {} 2022/august/ \;"
+Move all PNG files from august 2022 to 2022/august/,"mkdir -p 2022/august && find . -type f -iname ""*.png"" -newermt ""2022-08-01"" ! -newermt ""2022-09-01"" -exec mv {} 2022/august/ \;"
+Move all MP4 files from august 2022 to 2022/august/,"mkdir -p 2022/august && find . -type f -iname ""*.mp4"" -newermt ""2022-08-01"" ! -newermt ""2022-09-01"" -exec mv {} 2022/august/ \;"
+Move all MOV files from august 2022 to 2022/august/,"mkdir -p 2022/august && find . -type f -iname ""*.mov"" -newermt ""2022-08-01"" ! -newermt ""2022-09-01"" -exec mv {} 2022/august/ \;"
+Move all JPG files from september 2022 to 2022/september/,"mkdir -p 2022/september && find . -type f -iname ""*.jpg"" -newermt ""2022-09-01"" ! -newermt ""2022-10-01"" -exec mv {} 2022/september/ \;"
+Move all JPEG files from september 2022 to 2022/september/,"mkdir -p 2022/september && find . -type f -iname ""*.jpeg"" -newermt ""2022-09-01"" ! -newermt ""2022-10-01"" -exec mv {} 2022/september/ \;"
+Move all PNG files from september 2022 to 2022/september/,"mkdir -p 2022/september && find . -type f -iname ""*.png"" -newermt ""2022-09-01"" ! -newermt ""2022-10-01"" -exec mv {} 2022/september/ \;"
+Move all MP4 files from september 2022 to 2022/september/,"mkdir -p 2022/september && find . -type f -iname ""*.mp4"" -newermt ""2022-09-01"" ! -newermt ""2022-10-01"" -exec mv {} 2022/september/ \;"
+Move all MOV files from september 2022 to 2022/september/,"mkdir -p 2022/september && find . -type f -iname ""*.mov"" -newermt ""2022-09-01"" ! -newermt ""2022-10-01"" -exec mv {} 2022/september/ \;"
+Move all JPG files from october 2022 to 2022/october/,"mkdir -p 2022/october && find . -type f -iname ""*.jpg"" -newermt ""2022-10-01"" ! -newermt ""2022-11-01"" -exec mv {} 2022/october/ \;"
+Move all JPEG files from october 2022 to 2022/october/,"mkdir -p 2022/october && find . -type f -iname ""*.jpeg"" -newermt ""2022-10-01"" ! -newermt ""2022-11-01"" -exec mv {} 2022/october/ \;"
+Move all PNG files from october 2022 to 2022/october/,"mkdir -p 2022/october && find . -type f -iname ""*.png"" -newermt ""2022-10-01"" ! -newermt ""2022-11-01"" -exec mv {} 2022/october/ \;"
+Move all MP4 files from october 2022 to 2022/october/,"mkdir -p 2022/october && find . -type f -iname ""*.mp4"" -newermt ""2022-10-01"" ! -newermt ""2022-11-01"" -exec mv {} 2022/october/ \;"
+Move all MOV files from october 2022 to 2022/october/,"mkdir -p 2022/october && find . -type f -iname ""*.mov"" -newermt ""2022-10-01"" ! -newermt ""2022-11-01"" -exec mv {} 2022/october/ \;"
+Move all JPG files from november 2022 to 2022/november/,"mkdir -p 2022/november && find . -type f -iname ""*.jpg"" -newermt ""2022-11-01"" ! -newermt ""2022-12-01"" -exec mv {} 2022/november/ \;"
+Move all JPEG files from november 2022 to 2022/november/,"mkdir -p 2022/november && find . -type f -iname ""*.jpeg"" -newermt ""2022-11-01"" ! -newermt ""2022-12-01"" -exec mv {} 2022/november/ \;"
+Move all PNG files from november 2022 to 2022/november/,"mkdir -p 2022/november && find . -type f -iname ""*.png"" -newermt ""2022-11-01"" ! -newermt ""2022-12-01"" -exec mv {} 2022/november/ \;"
+Move all MP4 files from november 2022 to 2022/november/,"mkdir -p 2022/november && find . -type f -iname ""*.mp4"" -newermt ""2022-11-01"" ! -newermt ""2022-12-01"" -exec mv {} 2022/november/ \;"
+Move all MOV files from november 2022 to 2022/november/,"mkdir -p 2022/november && find . -type f -iname ""*.mov"" -newermt ""2022-11-01"" ! -newermt ""2022-12-01"" -exec mv {} 2022/november/ \;"
+Move all JPG files from december 2022 to 2022/december/,"mkdir -p 2022/december && find . -type f -iname ""*.jpg"" -newermt ""2022-12-01"" ! -newermt ""2023-01-01"" -exec mv {} 2022/december/ \;"
+Move all JPEG files from december 2022 to 2022/december/,"mkdir -p 2022/december && find . -type f -iname ""*.jpeg"" -newermt ""2022-12-01"" ! -newermt ""2023-01-01"" -exec mv {} 2022/december/ \;"
+Move all PNG files from december 2022 to 2022/december/,"mkdir -p 2022/december && find . -type f -iname ""*.png"" -newermt ""2022-12-01"" ! -newermt ""2023-01-01"" -exec mv {} 2022/december/ \;"
+Move all MP4 files from december 2022 to 2022/december/,"mkdir -p 2022/december && find . -type f -iname ""*.mp4"" -newermt ""2022-12-01"" ! -newermt ""2023-01-01"" -exec mv {} 2022/december/ \;"
+Move all MOV files from december 2022 to 2022/december/,"mkdir -p 2022/december && find . -type f -iname ""*.mov"" -newermt ""2022-12-01"" ! -newermt ""2023-01-01"" -exec mv {} 2022/december/ \;"
+Move all JPG files from january 2023 to 2023/january/,"mkdir -p 2023/january && find . -type f -iname ""*.jpg"" -newermt ""2023-01-01"" ! -newermt ""2023-02-01"" -exec mv {} 2023/january/ \;"
+Move all JPEG files from january 2023 to 2023/january/,"mkdir -p 2023/january && find . -type f -iname ""*.jpeg"" -newermt ""2023-01-01"" ! -newermt ""2023-02-01"" -exec mv {} 2023/january/ \;"
+Move all PNG files from january 2023 to 2023/january/,"mkdir -p 2023/january && find . -type f -iname ""*.png"" -newermt ""2023-01-01"" ! -newermt ""2023-02-01"" -exec mv {} 2023/january/ \;"
+Move all MP4 files from january 2023 to 2023/january/,"mkdir -p 2023/january && find . -type f -iname ""*.mp4"" -newermt ""2023-01-01"" ! -newermt ""2023-02-01"" -exec mv {} 2023/january/ \;"
+Move all MOV files from january 2023 to 2023/january/,"mkdir -p 2023/january && find . -type f -iname ""*.mov"" -newermt ""2023-01-01"" ! -newermt ""2023-02-01"" -exec mv {} 2023/january/ \;"
+Move all JPG files from february 2023 to 2023/february/,"mkdir -p 2023/february && find . -type f -iname ""*.jpg"" -newermt ""2023-02-01"" ! -newermt ""2023-03-01"" -exec mv {} 2023/february/ \;"
+Move all JPEG files from february 2023 to 2023/february/,"mkdir -p 2023/february && find . -type f -iname ""*.jpeg"" -newermt ""2023-02-01"" ! -newermt ""2023-03-01"" -exec mv {} 2023/february/ \;"
+Move all PNG files from february 2023 to 2023/february/,"mkdir -p 2023/february && find . -type f -iname ""*.png"" -newermt ""2023-02-01"" ! -newermt ""2023-03-01"" -exec mv {} 2023/february/ \;"
+Move all MP4 files from february 2023 to 2023/february/,"mkdir -p 2023/february && find . -type f -iname ""*.mp4"" -newermt ""2023-02-01"" ! -newermt ""2023-03-01"" -exec mv {} 2023/february/ \;"
+Move all MOV files from february 2023 to 2023/february/,"mkdir -p 2023/february && find . -type f -iname ""*.mov"" -newermt ""2023-02-01"" ! -newermt ""2023-03-01"" -exec mv {} 2023/february/ \;"
+Move all JPG files from march 2023 to 2023/march/,"mkdir -p 2023/march && find . -type f -iname ""*.jpg"" -newermt ""2023-03-01"" ! -newermt ""2023-04-01"" -exec mv {} 2023/march/ \;"
+Move all JPEG files from march 2023 to 2023/march/,"mkdir -p 2023/march && find . -type f -iname ""*.jpeg"" -newermt ""2023-03-01"" ! -newermt ""2023-04-01"" -exec mv {} 2023/march/ \;"
+Move all PNG files from march 2023 to 2023/march/,"mkdir -p 2023/march && find . -type f -iname ""*.png"" -newermt ""2023-03-01"" ! -newermt ""2023-04-01"" -exec mv {} 2023/march/ \;"
+Move all MP4 files from march 2023 to 2023/march/,"mkdir -p 2023/march && find . -type f -iname ""*.mp4"" -newermt ""2023-03-01"" ! -newermt ""2023-04-01"" -exec mv {} 2023/march/ \;"
+Move all MOV files from march 2023 to 2023/march/,"mkdir -p 2023/march && find . -type f -iname ""*.mov"" -newermt ""2023-03-01"" ! -newermt ""2023-04-01"" -exec mv {} 2023/march/ \;"
+Move all JPG files from april 2023 to 2023/april/,"mkdir -p 2023/april && find . -type f -iname ""*.jpg"" -newermt ""2023-04-01"" ! -newermt ""2023-05-01"" -exec mv {} 2023/april/ \;"
+Move all JPEG files from april 2023 to 2023/april/,"mkdir -p 2023/april && find . -type f -iname ""*.jpeg"" -newermt ""2023-04-01"" ! -newermt ""2023-05-01"" -exec mv {} 2023/april/ \;"
+Move all PNG files from april 2023 to 2023/april/,"mkdir -p 2023/april && find . -type f -iname ""*.png"" -newermt ""2023-04-01"" ! -newermt ""2023-05-01"" -exec mv {} 2023/april/ \;"
+Move all MP4 files from april 2023 to 2023/april/,"mkdir -p 2023/april && find . -type f -iname ""*.mp4"" -newermt ""2023-04-01"" ! -newermt ""2023-05-01"" -exec mv {} 2023/april/ \;"
+Move all MOV files from april 2023 to 2023/april/,"mkdir -p 2023/april && find . -type f -iname ""*.mov"" -newermt ""2023-04-01"" ! -newermt ""2023-05-01"" -exec mv {} 2023/april/ \;"
+Move all JPG files from may 2023 to 2023/may/,"mkdir -p 2023/may && find . -type f -iname ""*.jpg"" -newermt ""2023-05-01"" ! -newermt ""2023-06-01"" -exec mv {} 2023/may/ \;"
+Move all JPEG files from may 2023 to 2023/may/,"mkdir -p 2023/may && find . -type f -iname ""*.jpeg"" -newermt ""2023-05-01"" ! -newermt ""2023-06-01"" -exec mv {} 2023/may/ \;"
+Move all PNG files from may 2023 to 2023/may/,"mkdir -p 2023/may && find . -type f -iname ""*.png"" -newermt ""2023-05-01"" ! -newermt ""2023-06-01"" -exec mv {} 2023/may/ \;"
+Move all MP4 files from may 2023 to 2023/may/,"mkdir -p 2023/may && find . -type f -iname ""*.mp4"" -newermt ""2023-05-01"" ! -newermt ""2023-06-01"" -exec mv {} 2023/may/ \;"
+Move all MOV files from may 2023 to 2023/may/,"mkdir -p 2023/may && find . -type f -iname ""*.mov"" -newermt ""2023-05-01"" ! -newermt ""2023-06-01"" -exec mv {} 2023/may/ \;"
+Move all JPG files from june 2023 to 2023/june/,"mkdir -p 2023/june && find . -type f -iname ""*.jpg"" -newermt ""2023-06-01"" ! -newermt ""2023-07-01"" -exec mv {} 2023/june/ \;"
+Move all JPEG files from june 2023 to 2023/june/,"mkdir -p 2023/june && find . -type f -iname ""*.jpeg"" -newermt ""2023-06-01"" ! -newermt ""2023-07-01"" -exec mv {} 2023/june/ \;"
+Move all PNG files from june 2023 to 2023/june/,"mkdir -p 2023/june && find . -type f -iname ""*.png"" -newermt ""2023-06-01"" ! -newermt ""2023-07-01"" -exec mv {} 2023/june/ \;"
+Move all MP4 files from june 2023 to 2023/june/,"mkdir -p 2023/june && find . -type f -iname ""*.mp4"" -newermt ""2023-06-01"" ! -newermt ""2023-07-01"" -exec mv {} 2023/june/ \;"
+Move all MOV files from june 2023 to 2023/june/,"mkdir -p 2023/june && find . -type f -iname ""*.mov"" -newermt ""2023-06-01"" ! -newermt ""2023-07-01"" -exec mv {} 2023/june/ \;"
+Move all JPG files from july 2023 to 2023/july/,"mkdir -p 2023/july && find . -type f -iname ""*.jpg"" -newermt ""2023-07-01"" ! -newermt ""2023-08-01"" -exec mv {} 2023/july/ \;"
+Move all JPEG files from july 2023 to 2023/july/,"mkdir -p 2023/july && find . -type f -iname ""*.jpeg"" -newermt ""2023-07-01"" ! -newermt ""2023-08-01"" -exec mv {} 2023/july/ \;"
+Move all PNG files from july 2023 to 2023/july/,"mkdir -p 2023/july && find . -type f -iname ""*.png"" -newermt ""2023-07-01"" ! -newermt ""2023-08-01"" -exec mv {} 2023/july/ \;"
+Move all MP4 files from july 2023 to 2023/july/,"mkdir -p 2023/july && find . -type f -iname ""*.mp4"" -newermt ""2023-07-01"" ! -newermt ""2023-08-01"" -exec mv {} 2023/july/ \;"
+Move all MOV files from july 2023 to 2023/july/,"mkdir -p 2023/july && find . -type f -iname ""*.mov"" -newermt ""2023-07-01"" ! -newermt ""2023-08-01"" -exec mv {} 2023/july/ \;"
+Move all JPG files from august 2023 to 2023/august/,"mkdir -p 2023/august && find . -type f -iname ""*.jpg"" -newermt ""2023-08-01"" ! -newermt ""2023-09-01"" -exec mv {} 2023/august/ \;"
+Move all JPEG files from august 2023 to 2023/august/,"mkdir -p 2023/august && find . -type f -iname ""*.jpeg"" -newermt ""2023-08-01"" ! -newermt ""2023-09-01"" -exec mv {} 2023/august/ \;"
+Move all PNG files from august 2023 to 2023/august/,"mkdir -p 2023/august && find . -type f -iname ""*.png"" -newermt ""2023-08-01"" ! -newermt ""2023-09-01"" -exec mv {} 2023/august/ \;"
+Move all MP4 files from august 2023 to 2023/august/,"mkdir -p 2023/august && find . -type f -iname ""*.mp4"" -newermt ""2023-08-01"" ! -newermt ""2023-09-01"" -exec mv {} 2023/august/ \;"
+Move all MOV files from august 2023 to 2023/august/,"mkdir -p 2023/august && find . -type f -iname ""*.mov"" -newermt ""2023-08-01"" ! -newermt ""2023-09-01"" -exec mv {} 2023/august/ \;"
+Move all JPG files from september 2023 to 2023/september/,"mkdir -p 2023/september && find . -type f -iname ""*.jpg"" -newermt ""2023-09-01"" ! -newermt ""2023-10-01"" -exec mv {} 2023/september/ \;"
+Move all JPEG files from september 2023 to 2023/september/,"mkdir -p 2023/september && find . -type f -iname ""*.jpeg"" -newermt ""2023-09-01"" ! -newermt ""2023-10-01"" -exec mv {} 2023/september/ \;"
+Move all PNG files from september 2023 to 2023/september/,"mkdir -p 2023/september && find . -type f -iname ""*.png"" -newermt ""2023-09-01"" ! -newermt ""2023-10-01"" -exec mv {} 2023/september/ \;"
+Move all MP4 files from september 2023 to 2023/september/,"mkdir -p 2023/september && find . -type f -iname ""*.mp4"" -newermt ""2023-09-01"" ! -newermt ""2023-10-01"" -exec mv {} 2023/september/ \;"
+Move all MOV files from september 2023 to 2023/september/,"mkdir -p 2023/september && find . -type f -iname ""*.mov"" -newermt ""2023-09-01"" ! -newermt ""2023-10-01"" -exec mv {} 2023/september/ \;"
+Move all JPG files from october 2023 to 2023/october/,"mkdir -p 2023/october && find . -type f -iname ""*.jpg"" -newermt ""2023-10-01"" ! -newermt ""2023-11-01"" -exec mv {} 2023/october/ \;"
+Move all JPEG files from october 2023 to 2023/october/,"mkdir -p 2023/october && find . -type f -iname ""*.jpeg"" -newermt ""2023-10-01"" ! -newermt ""2023-11-01"" -exec mv {} 2023/october/ \;"
+Move all PNG files from october 2023 to 2023/october/,"mkdir -p 2023/october && find . -type f -iname ""*.png"" -newermt ""2023-10-01"" ! -newermt ""2023-11-01"" -exec mv {} 2023/october/ \;"
+Move all MP4 files from october 2023 to 2023/october/,"mkdir -p 2023/october && find . -type f -iname ""*.mp4"" -newermt ""2023-10-01"" ! -newermt ""2023-11-01"" -exec mv {} 2023/october/ \;"
+Move all MOV files from october 2023 to 2023/october/,"mkdir -p 2023/october && find . -type f -iname ""*.mov"" -newermt ""2023-10-01"" ! -newermt ""2023-11-01"" -exec mv {} 2023/october/ \;"
+Move all JPG files from november 2023 to 2023/november/,"mkdir -p 2023/november && find . -type f -iname ""*.jpg"" -newermt ""2023-11-01"" ! -newermt ""2023-12-01"" -exec mv {} 2023/november/ \;"
+Move all JPEG files from november 2023 to 2023/november/,"mkdir -p 2023/november && find . -type f -iname ""*.jpeg"" -newermt ""2023-11-01"" ! -newermt ""2023-12-01"" -exec mv {} 2023/november/ \;"
+Move all PNG files from november 2023 to 2023/november/,"mkdir -p 2023/november && find . -type f -iname ""*.png"" -newermt ""2023-11-01"" ! -newermt ""2023-12-01"" -exec mv {} 2023/november/ \;"
+Move all MP4 files from november 2023 to 2023/november/,"mkdir -p 2023/november && find . -type f -iname ""*.mp4"" -newermt ""2023-11-01"" ! -newermt ""2023-12-01"" -exec mv {} 2023/november/ \;"
+Move all MOV files from november 2023 to 2023/november/,"mkdir -p 2023/november && find . -type f -iname ""*.mov"" -newermt ""2023-11-01"" ! -newermt ""2023-12-01"" -exec mv {} 2023/november/ \;"
+Move all JPG files from december 2023 to 2023/december/,"mkdir -p 2023/december && find . -type f -iname ""*.jpg"" -newermt ""2023-12-01"" ! -newermt ""2024-01-01"" -exec mv {} 2023/december/ \;"
+Move all JPEG files from december 2023 to 2023/december/,"mkdir -p 2023/december && find . -type f -iname ""*.jpeg"" -newermt ""2023-12-01"" ! -newermt ""2024-01-01"" -exec mv {} 2023/december/ \;"
+Move all PNG files from december 2023 to 2023/december/,"mkdir -p 2023/december && find . -type f -iname ""*.png"" -newermt ""2023-12-01"" ! -newermt ""2024-01-01"" -exec mv {} 2023/december/ \;"
+Move all MP4 files from december 2023 to 2023/december/,"mkdir -p 2023/december && find . -type f -iname ""*.mp4"" -newermt ""2023-12-01"" ! -newermt ""2024-01-01"" -exec mv {} 2023/december/ \;"
+Move all MOV files from december 2023 to 2023/december/,"mkdir -p 2023/december && find . -type f -iname ""*.mov"" -newermt ""2023-12-01"" ! -newermt ""2024-01-01"" -exec mv {} 2023/december/ \;"
+Move all JPG files from january 2024 to 2024/january/,"mkdir -p 2024/january && find . -type f -iname ""*.jpg"" -newermt ""2024-01-01"" ! -newermt ""2024-02-01"" -exec mv {} 2024/january/ \;"
+Move all JPEG files from january 2024 to 2024/january/,"mkdir -p 2024/january && find . -type f -iname ""*.jpeg"" -newermt ""2024-01-01"" ! -newermt ""2024-02-01"" -exec mv {} 2024/january/ \;"
+Move all PNG files from january 2024 to 2024/january/,"mkdir -p 2024/january && find . -type f -iname ""*.png"" -newermt ""2024-01-01"" ! -newermt ""2024-02-01"" -exec mv {} 2024/january/ \;"
+Move all MP4 files from january 2024 to 2024/january/,"mkdir -p 2024/january && find . -type f -iname ""*.mp4"" -newermt ""2024-01-01"" ! -newermt ""2024-02-01"" -exec mv {} 2024/january/ \;"
+Move all MOV files from january 2024 to 2024/january/,"mkdir -p 2024/january && find . -type f -iname ""*.mov"" -newermt ""2024-01-01"" ! -newermt ""2024-02-01"" -exec mv {} 2024/january/ \;"
+Move all JPG files from february 2024 to 2024/february/,"mkdir -p 2024/february && find . -type f -iname ""*.jpg"" -newermt ""2024-02-01"" ! -newermt ""2024-03-01"" -exec mv {} 2024/february/ \;"
+Move all JPEG files from february 2024 to 2024/february/,"mkdir -p 2024/february && find . -type f -iname ""*.jpeg"" -newermt ""2024-02-01"" ! -newermt ""2024-03-01"" -exec mv {} 2024/february/ \;"
+Move all PNG files from february 2024 to 2024/february/,"mkdir -p 2024/february && find . -type f -iname ""*.png"" -newermt ""2024-02-01"" ! -newermt ""2024-03-01"" -exec mv {} 2024/february/ \;"
+Move all MP4 files from february 2024 to 2024/february/,"mkdir -p 2024/february && find . -type f -iname ""*.mp4"" -newermt ""2024-02-01"" ! -newermt ""2024-03-01"" -exec mv {} 2024/february/ \;"
+Move all MOV files from february 2024 to 2024/february/,"mkdir -p 2024/february && find . -type f -iname ""*.mov"" -newermt ""2024-02-01"" ! -newermt ""2024-03-01"" -exec mv {} 2024/february/ \;"
+Move all JPG files from march 2024 to 2024/march/,"mkdir -p 2024/march && find . -type f -iname ""*.jpg"" -newermt ""2024-03-01"" ! -newermt ""2024-04-01"" -exec mv {} 2024/march/ \;"
+Move all JPEG files from march 2024 to 2024/march/,"mkdir -p 2024/march && find . -type f -iname ""*.jpeg"" -newermt ""2024-03-01"" ! -newermt ""2024-04-01"" -exec mv {} 2024/march/ \;"
+Move all PNG files from march 2024 to 2024/march/,"mkdir -p 2024/march && find . -type f -iname ""*.png"" -newermt ""2024-03-01"" ! -newermt ""2024-04-01"" -exec mv {} 2024/march/ \;"
+Move all MP4 files from march 2024 to 2024/march/,"mkdir -p 2024/march && find . -type f -iname ""*.mp4"" -newermt ""2024-03-01"" ! -newermt ""2024-04-01"" -exec mv {} 2024/march/ \;"
+Move all MOV files from march 2024 to 2024/march/,"mkdir -p 2024/march && find . -type f -iname ""*.mov"" -newermt ""2024-03-01"" ! -newermt ""2024-04-01"" -exec mv {} 2024/march/ \;"
+Move all JPG files from april 2024 to 2024/april/,"mkdir -p 2024/april && find . -type f -iname ""*.jpg"" -newermt ""2024-04-01"" ! -newermt ""2024-05-01"" -exec mv {} 2024/april/ \;"
+Move all JPEG files from april 2024 to 2024/april/,"mkdir -p 2024/april && find . -type f -iname ""*.jpeg"" -newermt ""2024-04-01"" ! -newermt ""2024-05-01"" -exec mv {} 2024/april/ \;"
+Move all PNG files from april 2024 to 2024/april/,"mkdir -p 2024/april && find . -type f -iname ""*.png"" -newermt ""2024-04-01"" ! -newermt ""2024-05-01"" -exec mv {} 2024/april/ \;"
+Move all MP4 files from april 2024 to 2024/april/,"mkdir -p 2024/april && find . -type f -iname ""*.mp4"" -newermt ""2024-04-01"" ! -newermt ""2024-05-01"" -exec mv {} 2024/april/ \;"
+Move all MOV files from april 2024 to 2024/april/,"mkdir -p 2024/april && find . -type f -iname ""*.mov"" -newermt ""2024-04-01"" ! -newermt ""2024-05-01"" -exec mv {} 2024/april/ \;"
+Move all JPG files from may 2024 to 2024/may/,"mkdir -p 2024/may && find . -type f -iname ""*.jpg"" -newermt ""2024-05-01"" ! -newermt ""2024-06-01"" -exec mv {} 2024/may/ \;"
+Move all JPEG files from may 2024 to 2024/may/,"mkdir -p 2024/may && find . -type f -iname ""*.jpeg"" -newermt ""2024-05-01"" ! -newermt ""2024-06-01"" -exec mv {} 2024/may/ \;"
+Move all PNG files from may 2024 to 2024/may/,"mkdir -p 2024/may && find . -type f -iname ""*.png"" -newermt ""2024-05-01"" ! -newermt ""2024-06-01"" -exec mv {} 2024/may/ \;"
+Move all MP4 files from may 2024 to 2024/may/,"mkdir -p 2024/may && find . -type f -iname ""*.mp4"" -newermt ""2024-05-01"" ! -newermt ""2024-06-01"" -exec mv {} 2024/may/ \;"
+Move all MOV files from may 2024 to 2024/may/,"mkdir -p 2024/may && find . -type f -iname ""*.mov"" -newermt ""2024-05-01"" ! -newermt ""2024-06-01"" -exec mv {} 2024/may/ \;"
+Move all JPG files from june 2024 to 2024/june/,"mkdir -p 2024/june && find . -type f -iname ""*.jpg"" -newermt ""2024-06-01"" ! -newermt ""2024-07-01"" -exec mv {} 2024/june/ \;"
+Move all JPEG files from june 2024 to 2024/june/,"mkdir -p 2024/june && find . -type f -iname ""*.jpeg"" -newermt ""2024-06-01"" ! -newermt ""2024-07-01"" -exec mv {} 2024/june/ \;"
+Move all PNG files from june 2024 to 2024/june/,"mkdir -p 2024/june && find . -type f -iname ""*.png"" -newermt ""2024-06-01"" ! -newermt ""2024-07-01"" -exec mv {} 2024/june/ \;"
+Move all MP4 files from june 2024 to 2024/june/,"mkdir -p 2024/june && find . -type f -iname ""*.mp4"" -newermt ""2024-06-01"" ! -newermt ""2024-07-01"" -exec mv {} 2024/june/ \;"
+Move all MOV files from june 2024 to 2024/june/,"mkdir -p 2024/june && find . -type f -iname ""*.mov"" -newermt ""2024-06-01"" ! -newermt ""2024-07-01"" -exec mv {} 2024/june/ \;"
+Move all JPG files from july 2024 to 2024/july/,"mkdir -p 2024/july && find . -type f -iname ""*.jpg"" -newermt ""2024-07-01"" ! -newermt ""2024-08-01"" -exec mv {} 2024/july/ \;"
+Move all JPEG files from july 2024 to 2024/july/,"mkdir -p 2024/july && find . -type f -iname ""*.jpeg"" -newermt ""2024-07-01"" ! -newermt ""2024-08-01"" -exec mv {} 2024/july/ \;"
+Move all PNG files from july 2024 to 2024/july/,"mkdir -p 2024/july && find . -type f -iname ""*.png"" -newermt ""2024-07-01"" ! -newermt ""2024-08-01"" -exec mv {} 2024/july/ \;"
+Move all MP4 files from july 2024 to 2024/july/,"mkdir -p 2024/july && find . -type f -iname ""*.mp4"" -newermt ""2024-07-01"" ! -newermt ""2024-08-01"" -exec mv {} 2024/july/ \;"
+Move all MOV files from july 2024 to 2024/july/,"mkdir -p 2024/july && find . -type f -iname ""*.mov"" -newermt ""2024-07-01"" ! -newermt ""2024-08-01"" -exec mv {} 2024/july/ \;"
+Move all JPG files from august 2024 to 2024/august/,"mkdir -p 2024/august && find . -type f -iname ""*.jpg"" -newermt ""2024-08-01"" ! -newermt ""2024-09-01"" -exec mv {} 2024/august/ \;"
+Move all JPEG files from august 2024 to 2024/august/,"mkdir -p 2024/august && find . -type f -iname ""*.jpeg"" -newermt ""2024-08-01"" ! -newermt ""2024-09-01"" -exec mv {} 2024/august/ \;"
+Move all PNG files from august 2024 to 2024/august/,"mkdir -p 2024/august && find . -type f -iname ""*.png"" -newermt ""2024-08-01"" ! -newermt ""2024-09-01"" -exec mv {} 2024/august/ \;"
+Move all MP4 files from august 2024 to 2024/august/,"mkdir -p 2024/august && find . -type f -iname ""*.mp4"" -newermt ""2024-08-01"" ! -newermt ""2024-09-01"" -exec mv {} 2024/august/ \;"
+Move all MOV files from august 2024 to 2024/august/,"mkdir -p 2024/august && find . -type f -iname ""*.mov"" -newermt ""2024-08-01"" ! -newermt ""2024-09-01"" -exec mv {} 2024/august/ \;"
+Move all JPG files from september 2024 to 2024/september/,"mkdir -p 2024/september && find . -type f -iname ""*.jpg"" -newermt ""2024-09-01"" ! -newermt ""2024-10-01"" -exec mv {} 2024/september/ \;"
+Move all JPEG files from september 2024 to 2024/september/,"mkdir -p 2024/september && find . -type f -iname ""*.jpeg"" -newermt ""2024-09-01"" ! -newermt ""2024-10-01"" -exec mv {} 2024/september/ \;"
+Move all PNG files from september 2024 to 2024/september/,"mkdir -p 2024/september && find . -type f -iname ""*.png"" -newermt ""2024-09-01"" ! -newermt ""2024-10-01"" -exec mv {} 2024/september/ \;"
+Move all MP4 files from september 2024 to 2024/september/,"mkdir -p 2024/september && find . -type f -iname ""*.mp4"" -newermt ""2024-09-01"" ! -newermt ""2024-10-01"" -exec mv {} 2024/september/ \;"
+Move all MOV files from september 2024 to 2024/september/,"mkdir -p 2024/september && find . -type f -iname ""*.mov"" -newermt ""2024-09-01"" ! -newermt ""2024-10-01"" -exec mv {} 2024/september/ \;"
+Move all JPG files from october 2024 to 2024/october/,"mkdir -p 2024/october && find . -type f -iname ""*.jpg"" -newermt ""2024-10-01"" ! -newermt ""2024-11-01"" -exec mv {} 2024/october/ \;"
+Move all JPEG files from october 2024 to 2024/october/,"mkdir -p 2024/october && find . -type f -iname ""*.jpeg"" -newermt ""2024-10-01"" ! -newermt ""2024-11-01"" -exec mv {} 2024/october/ \;"
+Move all PNG files from october 2024 to 2024/october/,"mkdir -p 2024/october && find . -type f -iname ""*.png"" -newermt ""2024-10-01"" ! -newermt ""2024-11-01"" -exec mv {} 2024/october/ \;"
+Move all MP4 files from october 2024 to 2024/october/,"mkdir -p 2024/october && find . -type f -iname ""*.mp4"" -newermt ""2024-10-01"" ! -newermt ""2024-11-01"" -exec mv {} 2024/october/ \;"
+Move all MOV files from october 2024 to 2024/october/,"mkdir -p 2024/october && find . -type f -iname ""*.mov"" -newermt ""2024-10-01"" ! -newermt ""2024-11-01"" -exec mv {} 2024/october/ \;"
+Move all JPG files from november 2024 to 2024/november/,"mkdir -p 2024/november && find . -type f -iname ""*.jpg"" -newermt ""2024-11-01"" ! -newermt ""2024-12-01"" -exec mv {} 2024/november/ \;"
+Move all JPEG files from november 2024 to 2024/november/,"mkdir -p 2024/november && find . -type f -iname ""*.jpeg"" -newermt ""2024-11-01"" ! -newermt ""2024-12-01"" -exec mv {} 2024/november/ \;"
+Move all PNG files from november 2024 to 2024/november/,"mkdir -p 2024/november && find . -type f -iname ""*.png"" -newermt ""2024-11-01"" ! -newermt ""2024-12-01"" -exec mv {} 2024/november/ \;"
+Move all MP4 files from november 2024 to 2024/november/,"mkdir -p 2024/november && find . -type f -iname ""*.mp4"" -newermt ""2024-11-01"" ! -newermt ""2024-12-01"" -exec mv {} 2024/november/ \;"
+Move all MOV files from november 2024 to 2024/november/,"mkdir -p 2024/november && find . -type f -iname ""*.mov"" -newermt ""2024-11-01"" ! -newermt ""2024-12-01"" -exec mv {} 2024/november/ \;"
+Move all JPG files from december 2024 to 2024/december/,"mkdir -p 2024/december && find . -type f -iname ""*.jpg"" -newermt ""2024-12-01"" ! -newermt ""2025-01-01"" -exec mv {} 2024/december/ \;"
+Move all JPEG files from december 2024 to 2024/december/,"mkdir -p 2024/december && find . -type f -iname ""*.jpeg"" -newermt ""2024-12-01"" ! -newermt ""2025-01-01"" -exec mv {} 2024/december/ \;"
+Move all PNG files from december 2024 to 2024/december/,"mkdir -p 2024/december && find . -type f -iname ""*.png"" -newermt ""2024-12-01"" ! -newermt ""2025-01-01"" -exec mv {} 2024/december/ \;"
+Move all MP4 files from december 2024 to 2024/december/,"mkdir -p 2024/december && find . -type f -iname ""*.mp4"" -newermt ""2024-12-01"" ! -newermt ""2025-01-01"" -exec mv {} 2024/december/ \;"
+Move all MOV files from december 2024 to 2024/december/,"mkdir -p 2024/december && find . -type f -iname ""*.mov"" -newermt ""2024-12-01"" ! -newermt ""2025-01-01"" -exec mv {} 2024/december/ \;"
+Group all MOV files based on their creation date into year/month folders,"find . -type f -iname ""*.mov"" -exec bash -c 'for f; do dir=$(date -r ""$f"" ""+%Y/%B"" | tr ""[:upper:]"" ""[:lower:]""); mkdir -p ""$dir""; mv ""$f"" ""$dir/""; done' bash {} +"
+Rename all image and video files in the current directory using the format YYYY_MM_DD.<ext>","for f in *.{jpg,jpeg,png,mp4,mov}; do ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\"; done"
+Rename the file IMG_0001.JPG to its date format","f=\"IMG_0001.JPG\"; ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\""
+Rename the file video123.MOV based on its date as YYYY_MM_DD.MOV","f=\"video123.MOV\"; ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\""
+Rename all .jpg files to their date format","for f in *.jpg; do ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\"; done"
+Rename all .mp4 files in the directory using their creation date","for f in *.mp4; do ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\"; done"
+Rename all .mov files in the directory using their creation date","for f in *.mov; do ext=\"${f##*.}\"; date=$(date -r \"$f\" +\"%Y_%m_%d\"); mv \"$f\" \"${date}.${ext}\"; done"
